@@ -21,7 +21,7 @@ BrailleTech es un proyecto que ofrece herramientas para la transcripción de tex
 ## Instrucciones de Instalación
 1. Clona este repositorio o descárgalo como archivo ZIP.
 ```bash
-git clone https://github.com/TU_USUARIO/BrailleTech.git
+git clone https://github.com/MaxCar31/BrailleTech.git
 ```
 2. Abre el archivo `index.html` en tu navegador web.
 3. ¡Comienza a usar BrailleTech!
