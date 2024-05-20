@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Braille</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Traductor de Braille</h1>
+        <div class="grid-container">
+            <div class="spanish-to-braille">
+                <h2>Español a Braille</h2>
+                <textarea id="inputText" placeholder="Escribe aquí... ¡Importante lo que escribas aqui tambien servira para generar las Señaléticas"></textarea>
+                <button class="Traducir-btn" onclick="translateToBraille()">Traducir a Braille</button>
+                <div id="outputBraille" class="output"></div>
+            </div>
+            <div class="braille-to-spanish">
+                <h2>Braille a Español</h2>
+                <textarea id="inputBraille" placeholder="Escribe Braille aquí..."></textarea>
+                <button class="Traducir-btn" onclick="translateToSpanish()">Traducir a Español</button>
+                <div id="outputSpanish" class="output"></div>
+            </div>
+            <div class="signage-section">
+                <h2>Generador de Señalética</h2>
+                <div class="signage-grid">
+                    <div class="signage-format">
+                        <h3>Formato Normal</h3>
+                        <button class="generate-btn" onclick="generateBrailleSignage()">Generar Señalética</button>
+                        <button class="download-btn" onclick="downloadSignageImage()">Descargar Señalética</button>
+                        <div id="outputSignage" class="output signage-container">
+                            <div class="ink-text">Texto en tinta:</div>
+                            <div id="outputSignageInk" class="ink"></div>
+                            <div class="braille-text">Texto en braille:</div>
+                            <div id="outputSignageBraille" class="braille"></div>
+                        </div>
+                    </div>
+                    <div class="signage-format">
+                        <h3>Formato Espejo</h3>
+                        <button class="generate-btn" onclick="generateMirrorBraille()">Generar Impresión en Espejo</button>
+                        <button class="download-btn" onclick="downloadMirrorImage()">Descargar Señaletica Espejo</button>
+                        <div id="outputMirror" class="output signage-container">
+                            <div class="ink-text">Texto en tinta:</div>
+                            <div id="outputMirrorInk" class="ink"></div>
+                            <div class="braille-text">Texto en braille (Espejo):</div>
+                            <div id="outputMirrorBraille" class="braille"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
