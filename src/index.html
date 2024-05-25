@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Braille</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Traductor de Braille</h1>
+        <div class="translation-section">
+            <div class="translation-block">
+                <select id="inputLanguage" class="language-select">
+                    <option value="espanol">Español</option>
+                    <option value="braille">Braille</option>
+                </select>
+                <textarea id="inputText" placeholder="Escribe aquí..."></textarea>
+            </div>
+            <button id="swapLanguages" class="swap-btn">⇄</button>
+            <div class="translation-block">
+                <select id="outputLanguage" class="language-select">
+                    <option value="braille">Braille</option>
+                    <option value="espanol">Español</option>
+                </select>
+                <div id="outputText" class="output"></div>
+            </div>
+        </div>
+        <div class="signage-section">
+            <h2>Generador de Señalética</h2>
+            <div class="signage-grid">
+                <div class="signage-format">
+                    <h3>Formato Normal</h3>
+                    <button id="generateBrailleSignage" class="generate-btn">Generar Señalética</button>
+                    <div id="outputSignage" class="output signage-container">
+                        <div class="ink-text">Texto en tinta:</div>
+                        <div id="outputSignageInk" class="ink"></div>
+                        <div class="braille-text">Texto en braille:</div>
+                        <div id="outputSignageBraille" class="braille"></div>
+                    </div>
+                    <button id="downloadSignageImage" class="download-btn">Descargar Señalética</button>
+                </div>
+                <div class="signage-format">
+                    <h3>Formato Espejo</h3>
+                    <button id="generateMirrorBraille" class="generate-btn">Generar Impresión en Espejo</button>
+                    <div id="outputMirror" class="output signage-container">
+                        <div class="ink-text">Texto en tinta:</div>
+                        <div id="outputMirrorInk" class="ink"></div>
+                        <div class="braille-text">Texto en braille (Espejo):</div>
+                        <div id="outputMirrorBraille" class="braille"></div>
+                    </div>
+                    <button id="downloadMirrorImage" class="download-btn">Descargar Señaletica Espejo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
