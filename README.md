@@ -1,7 +1,6 @@
 # BrailleTech
 
- <img src="https://github.com/MaxCar31/BrailleTech/assets/141116497/e0d8a790-22e3-4fdc-ba4e-025c6b5f7776" alt="prueba" width="300px">
-
+ <img src="https://github.com/MaxCar31/BrailleTech/assets/141116497/bb746657-6220-4f87-a121-1bb73f7c927f" alt="prueba" width="300px">
 
 ## Descripción
 BrailleTech es un proyecto que ofrece herramientas para la transcripción de textos entre español y braille, así como la generación de señalética braille a partir de textos en español. Además, proporciona la capacidad de generar impresiones en espejo de textos en braille para su uso en escritura manual.
