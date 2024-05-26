@@ -4,56 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traductor de Braille</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome CDN Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   
 </head>
 <body>
+
     <div class="container">
-        <h1>Traductor de Braille</h1>
-        <div class="translation-section">
-            <div class="translation-block">
-                <select id="inputLanguage" class="language-select">
-                    <option value="espanol">Español</option>
-                    <option value="braille">Braille</option>
-                </select>
-                <textarea id="inputText" placeholder="Escribe aquí..."></textarea>
+        <img id="logo" src="https://private-user-images.githubusercontent.com/141116497/333843165-bb746657-6220-4f87-a121-1bb73f7c927f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTY2ODk4MTMsIm5iZiI6MTcxNjY4OTUxMywicGF0aCI6Ii8xNDExMTY0OTcvMzMzODQzMTY1LWJiNzQ2NjU3LTYyMjAtNGY4Ny1hMTIxLTFiYjczZjdjOTI3Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNTI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDUyNlQwMjExNTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xZjc1YjkxNWRmZGZlNGE5MmNiN2UxZTcyNmQ5ZDMxNDY3NzkxNzM5N2U5MGVmOTEzZDA4YWY1ZTExMjI2MTkwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.EL5brJrz8raDqms7a9pub2R_qdsvuz8dvtVO7monh4A" alt="Descripción de la imagen">     
+        <div class="wrapper">
+              <div class="text-input">
+                <textarea spellcheck="false" id="inputText" placeholder="Escribe aquí..."></textarea>
+                <textarea spellcheck="false" readonly disabled id="outputText" class="output" placeholder="Traducción"></textarea>
             </div>
-            <button id="swapLanguages" class="swap-btn">⇄</button>
-            <div class="translation-block">
-                <select id="outputLanguage" class="language-select">
-                    <option value="braille">Braille</option>
-                    <option value="espanol">Español</option>
-                </select>
-                <div id="outputText" class="output"></div>
-            </div>
+            <ul class="controls">
+                <li class="row from">
+                    <div class="icons">
+                        <i id="soundFrom" class="fas fa-volume-up"></i>
+                        <i id="copyFrom" class="fas fa-copy"></i>
+                    </div>
+                    <select id="inputLanguage" class="language-select" disabled>
+                        <option value="espanol">Español</option>
+                        <option value="braille">Braille</option>
+                    </select>
+                </li>
+                <li class="exchange"><i class="fas fa-exchange-alt" id="swapLanguages"></i></li>
+                <li class="row to">
+                    <select id="outputLanguage" class="language-select" disabled>
+                        <option value="braille">Braille</option>
+                        <option value="espanol">Español</option>
+                    </select>
+                    <div class="icons">
+                        <i id="soundTo" class="fas fa-volume-up"></i>
+                        <i id="copyTo" class="fas fa-copy"></i>
+                    </div>
+                </li>
+            </ul>
         </div>
+        <button id="translate" class="translate-btn">Traducir</button>
+        <h2>Descargar Señaleticas</h2>
         <div class="signage-section">
-            <h2>Generador de Señalética</h2>
-            <div class="signage-grid">
-                <div class="signage-format">
-                    <h3>Formato Normal</h3>
-                    <button id="generateBrailleSignage" class="generate-btn">Generar Señalética</button>
-                    <div id="outputSignage" class="output signage-container">
-                        <div class="ink-text">Texto en tinta:</div>
-                        <div id="outputSignageInk" class="ink"></div>
-                        <div class="braille-text">Texto en braille:</div>
-                        <div id="outputSignageBraille" class="braille"></div>
-                    </div>
-                    <button id="downloadSignageImage" class="download-btn">Descargar Señalética</button>
-                </div>
-                <div class="signage-format">
-                    <h3>Formato Espejo</h3>
-                    <button id="generateMirrorBraille" class="generate-btn">Generar Impresión en Espejo</button>
-                    <div id="outputMirror" class="output signage-container">
-                        <div class="ink-text">Texto en tinta:</div>
-                        <div id="outputMirrorInk" class="ink"></div>
-                        <div class="braille-text">Texto en braille (Espejo):</div>
-                        <div id="outputMirrorBraille" class="braille"></div>
-                    </div>
-                    <button id="downloadMirrorImage" class="download-btn">Descargar Señaletica Espejo</button>
-                </div>
-            </div>
+            <button id="downloadSignageBtn" class="download-btn">Formato Normal</button>                
+            <button id="downloadMirrorImageBtn" class="download-btn">Formato Espejo</button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <footer>
+        <p>BrailleTech todos los derechos reservados &copy; 2024</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="validator.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>

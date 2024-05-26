@@ -2,33 +2,38 @@ import brailleMap from './brailleMap';
 
 class Braille {
     static toBraille(text) {
-        let brailleText = '';
-        for (let i = 0; i < text.length; i++) {
-            let char = text[i];
-            if (brailleMap[char]) {
-                brailleText += brailleMap[char];
+        return text.split(/(\d+)/).map(chunk => {
+            if (/\d/.test(chunk)) {
+                return '⠼' + [...chunk].map(char => brailleMap[char]).join('');
             } else {
-                brailleText += char;
+                return [...chunk].map(char => brailleMap[char] || char).join('');
             }
-        }
-        return brailleText;
+        }).join('');
     }
 
     static toText(braille) {
         const reversedMap = Object.fromEntries(Object.entries(brailleMap).map(([k, v]) => [v, k]));
         let text = '';
         let isCapital = false;
+        let isNumber = false;
 
-        for (let i = 0; i < braille.length; i++) {
-            let char = braille[i];
-            if (char === '⠠') { // Indicador de mayúsculas
+        for (let char of braille) {
+            if (char === '⠠') {
                 isCapital = true;
-                continue;
+            } else if (char === '⠼') {
+                isNumber = true;
             } else {
                 let translatedChar = reversedMap[char] || char;
                 if (isCapital) {
                     translatedChar = translatedChar.toUpperCase();
                     isCapital = false;
+                }
+                if (isNumber) {
+                    if ('⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚'.includes(char)) {
+                        translatedChar = reversedMap[char];
+                    } else {
+                        isNumber = false;
+                    }
                 }
                 text += translatedChar;
             }
