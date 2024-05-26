@@ -81,7 +81,7 @@ git clone https://github.com/MaxCar31/BrailleTech.git
 Cambia al directorio del proyecto clonado:
    
 ```bash
-cd BrailleTech
+cd BrailleTech_Codigo
 ```
 
 ### 5. Instala las dependencias:
