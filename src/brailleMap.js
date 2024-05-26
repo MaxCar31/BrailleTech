@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Este módulo proporciona un mapa de caracteres a su representación en Braille.
+ */
+
+/**
+ * Objeto que mapea caracteres a su representación en Braille.
+ * @type {Object.<string, string>}
+ */
 const brailleMap = {
     'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑',
     'f': '⠋', 'g': '⠛', 'h': '⠓', 'i': '⠊', 'j': '⠚',
@@ -17,7 +25,7 @@ const brailleMap = {
     '(': '⠶', ')': '⠶', '"': '⠦', '\'': '⠴', '/': '⠌', '@': '⠈',
     '1': '⠁', '2': '⠃', '3': '⠉', '4': '⠙', '5': '⠑',
     '6': '⠋', '7': '⠛', '8': '⠓', '9': '⠊', '0': '⠚',
-    '%': '⠸⠢', // Símbolo de porcentaje
+    '%': '⠸⠢', 
     '$': '⠸⠂',
     '€': '⠈⠑', '¢': '⠈⠙', '£': '⠈⠃', '¥': '⠈⠋',
     '§': '⠰⠂', '&': '⠈⠅', '*': '⠔', '^': '⠈⠮', '+': '⠤⠤', '=': '⠶',
@@ -26,3 +34,4 @@ const brailleMap = {
 };
 
 export default brailleMap;
+
