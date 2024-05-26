@@ -19,20 +19,99 @@ BrailleTech es un proyecto que ofrece herramientas para la transcripción de tex
 
 ![image](https://github.com/MaxCar31/BrailleTech/assets/141116497/1849bb58-8a7b-4f75-890b-970fcad77d15)
 
-## Instrucciones de Instalación
-1. Clona este repositorio o descárgalo como archivo ZIP.
+## Instrucciones de Instalación y Ejecución 
+
+Sigue los siguientes pasos para instalar Node.js y npm, clonar, instalar dependencias y ejecutar el proyecto BrailleTech:
+
+### 1.-Instalar Node.js y npm:
+
+#### Windows:
+
+1. Descarga el instalador de Node.js desde nodejs.org.
+   
+2. Ejecuta el instalador y sigue las instrucciones. Asegúrate de marcar la opción "Install npm".
+
+3. Alternativamente, si ejecutas desde cmd el siguiente comando:
+
+ ```sh
+winget install OpenJS.NodeJS
+ ```
+Este comando instalará la última versión estable de Node.js, que incluye npm.
+
+#### macOS:
+
+1. Descarga el instalador de Node.js desde nodejs.org.
+
+2. Ejecuta el instalador y sigue las instrucciones.
+
+3. Alternativamente, si usas Homebrew, puedes instalarlo con:
+ ```sh
+ brew install node
+```
+
+#### Linux:
+
+Abre tu terminal y ejecuta los siguientes comandos:
+
+ ```sh
+sudo apt update
+sudo apt install nodejs npm
+ ```
+
+### 2.-Verificar la instalación de Node.js y npm:
+
+Abre una terminal y ejecuta los siguientes comandos para asegurarte de que Node.js y npm se han instalado correctamente:
+
+ ```sh
+node -v
+npm -v
+ ```
+
+Deberías ver los números de versión instalados de Node.js y npm.
+
+### 3. Clona este repositorio o descárgalo como archivo ZIP.
+
+En la terminal, clona el repositorio BrailleTech usando el siguiente comando:
+   
 ```bash
 git clone https://github.com/MaxCar31/BrailleTech.git
 ```
+### 4. Navega al directorio del proyecto
+
+Cambia al directorio del proyecto clonado:
+   
 ```bash
-npm install --save-dev webpack-dev-server
-```
-```bash
-npx webpack serve
+cd BrailleTech
 ```
 
-2. Abre el archivo `index.html` en tu navegador web.
-3. ¡Comienza a usar BrailleTech!
+### 5. Instala las dependencias:
+
+Ejecuta el siguiente comando para instalar todas las dependencias necesarias que se encuentran en el archivo package.json:
+
+```bash
+npm install
+```
+
+### 6. Ejecutar el proyecto:
+
+Usa el siguiente comando para iniciar el servidor de desarrollo:
+
+
+```bash
+npm start
+```
+
+
+### Descripción de los comandos en `package.json`
+
+Para mayor claridad, aquí tienes una breve descripción de los scripts en tu archivo `package.json`:
+
+- `start`: Inicia el servidor de desarrollo utilizando Webpack y abre el proyecto en el navegador.
+- `test`: Ejecuta las pruebas utilizando Jest.
+- `docs`: Genera la documentación del proyecto utilizando JSDoc. (Tambien lo puedes encontrar en la carpeta Docs del repositorio)
+
+Asegúrate de incluir cualquier otra información relevante o dependencias adicionales que puedan ser necesarias para el correcto funcionamiento del proyecto.
+
 
 ## Contribuciones
 Las contribuciones son bienvenidas. Si deseas mejorar este proyecto, por favor abre un issue para discutir los cambios propuestos o envía un pull request con tus modificaciones.
