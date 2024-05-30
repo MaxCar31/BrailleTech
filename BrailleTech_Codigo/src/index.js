@@ -21,6 +21,23 @@ function fromBraille(brailleText) {
     return Braille.toText(brailleText);
 }
 
+// Función para agregar saltos de línea cada 50 caracteres
+function addLineBreaks(text, maxWords) {
+    let words = text.split(/\s+/); // Dividir el texto en palabras
+    let result = '';
+    let lineWords = [];
+    words.forEach(word => {
+        if ((lineWords.join(' ') + ' ' + word).split(/\s+/).length <= maxWords) {
+            lineWords.push(word);
+        } else {
+            result += lineWords.join(' ') + '\n';
+            lineWords = [word];
+        }
+    });
+    result += lineWords.join(' '); // Agregar la última línea de palabras
+    return result.trim();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Elementos del DOM
     const swapLanguagesBtn = document.getElementById('swapLanguages');
@@ -109,7 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const inputText = document.getElementById('inputText').value;
+        let inputText = document.getElementById('inputText').value;
+        inputText = addLineBreaks(inputText, 10);  // Añadir saltos de línea cada 50 caracteres
         const brailleOutput = toBraille(inputText);
         const signageElement = createSignageElement(inputText, brailleOutput);
         downloadImage(signageElement, 'signage.png');
@@ -117,7 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento para descargar la imagen en espejo
     downloadMirrorImageBtn.addEventListener('click', () => {
-        const inputText = document.getElementById('inputText').value;
+        let inputText = document.getElementById('inputText').value;
+        inputText = addLineBreaks(inputText, 10);  // Añadir saltos de línea cada 50 caracteres
         const brailleOutput = toBraille(inputText);
         const signageElement = createMirrorElement(brailleOutput);
         downloadPDF(signageElement, 'mirror_signage.pdf');
