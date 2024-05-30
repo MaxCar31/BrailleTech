@@ -21,6 +21,24 @@ function fromBraille(brailleText) {
     return Braille.toText(brailleText);
 }
 
+// Función para agregar saltos de línea cada 50 caracteres
+function addLineBreaks(text) {
+    const maxWords = 7;
+    let words = text.split(/\s+/); // Dividir el texto en palabras
+    let result = '';
+    let lineWords = [];
+    words.forEach(word => {
+        if ((lineWords.join(' ') + ' ' + word).split(/\s+/).length <= maxWords) {
+            lineWords.push(word);
+        } else {
+            result += lineWords.join(' ') + '\n';
+            lineWords = [word];
+        }
+    });
+    result += lineWords.join(' '); // Agregar la última línea de palabras
+    return result.trim();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Elementos del DOM
     const swapLanguagesBtn = document.getElementById('swapLanguages');
@@ -109,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const inputText = document.getElementById('inputText').value;
+        let inputText = document.getElementById('inputText').value;
+        inputText = addLineBreaks(inputText);  
         const brailleOutput = toBraille(inputText);
         const signageElement = createSignageElement(inputText, brailleOutput);
         downloadImage(signageElement, 'signage.png');
@@ -117,8 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento para descargar la imagen en espejo
     downloadMirrorImageBtn.addEventListener('click', () => {
-        const inputText = document.getElementById('inputText').value;
-        const brailleOutput = toBraille(inputText);
+        const inputLanguage = document.getElementById('inputLanguage').value;
+        if (inputLanguage !== 'espanol') {
+            alert('El botón solo está disponible cuando el texto de entrada sea en español.');
+            return;
+        }
+        let inputText = document.getElementById('inputText').value;
+        inputText = addLineBreaks(inputText);  
+        let brailleOutput='';
+        brailleOutput = toBraille(inputText);               
         const signageElement = createMirrorElement(brailleOutput);
         downloadPDF(signageElement, 'mirror_signage.pdf');
     });
@@ -185,36 +211,57 @@ function createMirrorElement(brailleOutput) {
     document.body.appendChild(signageElement);
     return signageElement;
 }
-
-/**
+/*
  * Descarga un PDF del elemento dado.
  * @param {HTMLElement} element - El elemento a convertir en PDF.
  * @param {string} filename - El nombre del archivo del PDF.
+ * @param {number} margin - El margen en milímetros para el PDF.
  */
-// Función para descargar el PDF
-function downloadPDF(element, filename) {
-    html2canvas(element, { scale: 2 }).then(canvas => {
-        const mirrorCanvas = document.createElement('canvas');
-        mirrorCanvas.width = canvas.width;
-        mirrorCanvas.height = canvas.height;
-        const ctx = mirrorCanvas.getContext('2d');
-        ctx.scale(-1, 1);
-        ctx.drawImage(canvas, -canvas.width, 0);
-        const imgData = mirrorCanvas.toDataURL('image/png');
+function downloadPDF(element, filename, margin = 10) {
+    // Escalar el elemento para mejorar la calidad de la imagen en el PDF
+    const scale = 2;
+
+    html2canvas(element, { scale: scale }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+
+        // Crear una nueva instancia de jsPDF
         let pdf = new jsPDF('p', 'mm', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = mirrorCanvas.width;
-        const imgHeight = mirrorCanvas.height;
+        const pdfWidth = pdf.internal.pageSize.getWidth() - 2 * margin;
+        const pdfHeight = pdf.internal.pageSize.getHeight() - 2 * margin;
+        const imgWidth = canvas.width / scale;
+        const imgHeight = canvas.height / scale;
         const ratio = imgWidth / imgHeight;
-        let newWidth = pdfWidth / 2;
-        let newHeight = newWidth / ratio;
-        if (newHeight > pdfHeight / 2) {
-            newHeight = pdfHeight / 2;
+
+        // Calcular las dimensiones de la imagen para que se ajuste al tamaño del PDF manteniendo la proporción
+        let newWidth, newHeight;
+
+        if (imgWidth > imgHeight) {
+            // Si la imagen es más ancha que alta, ajustamos el ancho al ancho del PDF y calculamos la altura proporcionalmente
+            newWidth = pdfWidth;
+            newHeight = newWidth / ratio;
+        } else {
+            // Si la imagen es más alta que ancha, ajustamos la altura a la altura del PDF y calculamos el ancho proporcionalmente
+            newHeight = pdfHeight;
             newWidth = newHeight * ratio;
         }
-        pdf.addImage(imgData, 'PNG', 0, 0, newWidth, newHeight);
+
+        // Asegurarse de que la imagen cabe en el PDF sin desbordarse
+        if (newHeight > pdfHeight) {
+            newHeight = pdfHeight;
+            newWidth = newHeight * ratio;
+        }
+        if (newWidth > pdfWidth) {
+            newWidth = pdfWidth;
+            newHeight = newWidth / ratio;
+        }
+
+        // Añadir la imagen al PDF con márgenes
+        pdf.addImage(imgData, 'PNG', margin, margin, newWidth, newHeight);
+
+        // Guardar el archivo PDF con el nombre especificado
         pdf.save(filename);
+
+        // Eliminar el elemento del DOM después de generar el PDF
         document.body.removeChild(element);
     });
 }
