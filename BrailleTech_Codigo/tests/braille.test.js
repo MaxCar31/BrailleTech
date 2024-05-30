@@ -62,6 +62,18 @@ describe('Braille Translator - Spanish to Braille', () => {
     const expectedOutput = '⠢⠢⠀⠖⠖ ⠄ ⠂ ⠲';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
+
+  test('translating a question', () => {
+    const input = '¿A que hora nos vamos de aquí?';
+    const expectedOutput = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+
+  test('translating a sentence ', () => {
+    const input = '¡No me grites! Porque yo no te estoy gritando.';
+    const expectedOutput = '⠖⠠⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖⠀⠠⠏⠕⠗⠟⠥⠑⠀⠽⠕⠀⠝⠕⠀⠞⠑⠀⠑⠎⠞⠕⠽⠀⠛⠗⠊⠞⠁⠝⠙⠕⠄';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
 });
 
 //Pruebas de traducción de braille a español
@@ -125,5 +137,17 @@ describe('Braille Translator - Braille to Spanish', () => {
     const expectedOutput = '¿? ¡! . , +';
     const input = '⠢⠢⠀⠖⠖ ⠄ ⠂ ⠲';
     expect(Braille.toText(input)).toBe(expectedOutput);
-  });  
+  });
+
+  test('translating a question', () => {
+    const expectedOutput = '¿A que hora nos vamos de aquí?';
+    const input = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+
+  test('translating a sentence ', () => {
+    const expectedOutput = '¡No me grites! Porque yo no te estoy gritando.';
+    const input = '⠖⠠⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖⠀⠠⠏⠕⠗⠟⠥⠑⠀⠽⠕⠀⠝⠕⠀⠞⠑⠀⠑⠎⠞⠕⠽⠀⠛⠗⠊⠞⠁⠝⠙⠕⠄';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
 });
