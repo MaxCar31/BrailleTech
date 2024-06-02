@@ -30,4 +30,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./BRAILLETECH_CODIGO/src  # Directorio donde están los archivos construidos para despliegue
+          publish_dir: ./src  # Directorio donde están los archivos construidos para despliegue
