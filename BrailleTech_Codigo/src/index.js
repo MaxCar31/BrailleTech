@@ -198,19 +198,19 @@ function downloadImage(element, filename) {
  * @param {string} brailleOutput - El texto en Braille.
  * @returns {HTMLElement} El elemento de espejo creado.
  */
-function createMirrorElement(brailleOutput) {
-    
-    const signageElement = document.createElement('div');
-    signageElement.id = 'outputMirror';
-    signageElement.className = 'output signage-container';
-    const outputMirrorBraille = document.createElement('div');
-    outputMirrorBraille.id = 'outputMirrorBraille';
-    outputMirrorBraille.className = 'braille';
-    outputMirrorBraille.innerText = brailleOutput;
-    signageElement.appendChild(outputMirrorBraille);
-    document.body.appendChild(signageElement);
-    return signageElement;
-}
+    function createMirrorElement(brailleOutput) {
+        const signageElement = document.createElement('div');
+        signageElement.id = 'outputMirror';
+        signageElement.className = 'output signage-container';
+        //signageElement.style.transform = 'rotateY(90deg)'; // Agrega esta línea para rotar el elemento
+        const outputMirrorBraille = document.createElement('div');
+        outputMirrorBraille.id = 'outputMirrorBraille';
+        outputMirrorBraille.className = 'braille';
+        outputMirrorBraille.innerText = brailleOutput;
+        signageElement.appendChild(outputMirrorBraille);
+        document.body.appendChild(signageElement);
+        return signageElement;
+    }
 /*
  * Descarga un PDF del elemento dado.
  * @param {HTMLElement} element - El elemento a convertir en PDF.

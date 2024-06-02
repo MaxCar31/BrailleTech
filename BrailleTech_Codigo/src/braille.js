@@ -30,35 +30,6 @@ class Braille {
      */
 
   
-    // static toText(braille) {
-    //     const reversedMap = Object.fromEntries(Object.entries(brailleMap).map(([k, v]) => [v, k]));
-    //     let text = '';
-    //     let isCapital = false;
-    //     let isNumber = false;
-
-    //     for (let char of braille) {
-    //         if (char === '⠨') {
-    //             isCapital = true;
-    //         } else if (char === '⠼') {
-    //             isNumber = true;
-    //         } else {
-    //             let translatedChar = reversedMap[char] || char;
-    //             if (isCapital) {
-    //                 translatedChar = translatedChar.toUpperCase();
-    //                 isCapital = false;
-    //             }
-    //             if (isNumber) {
-    //                 if ('⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚'.includes(char)) {
-    //                     translatedChar = reversedMap[char];
-    //                 } else {
-    //                     isNumber = false;
-    //                 }
-    //             }
-    //             text += translatedChar;
-    //         }
-    //     }
-    //     return text;
-    // }
 
     static reversedMap = Object.fromEntries(Object.entries(brailleMap).map(([k, v]) => [v, k]));
     
@@ -66,24 +37,21 @@ class Braille {
         let text = '';
         let isCapital = false;
         let isNumber = false;
-    
+
         braille.split('').forEach((char, index) => {
-            const prevChar = index > 0 ? braille[index - 1] : null;
-            const nextChar = index < braille.length - 1 ? braille[index + 1] : null;
-    
             if (this.isCapitalIndicator(char)) {
                 isCapital = true;
             } else if (this.isNumberIndicator(char)) {
                 isNumber = true;
             } else if (this.isPunctuation(char)) {
-                text += this.handlePunctuation(char, prevChar, nextChar, isNumber);
+                text += this.handlePunctuation(char, text);
             } else {
                 text += this.translateChar(char, isCapital, isNumber);
                 isCapital = false;
                 isNumber = this.updateIsNumber(char, isNumber);
             }
         });
-    
+
         return text;
     }
     
@@ -96,31 +64,33 @@ class Braille {
     }
     
     static isPunctuation(char) {
-        return char === '⠢' || char === '⠖';
+        return char === '⠢' || char === '⠖' || char === '⠄' || char === '⠂' || char === '⠆' || char === '⠒';
     }
     
-    static handlePunctuation(char, prevChar, nextChar, isNumber) {
-        if (char === '⠢') { // Pregunta
-            if (!prevChar || /[.\s]/.test(prevChar)) {
+    static handlePunctuation(char, text) {
+        if (char === '⠢') {
+            // Determine whether to return '¿' or '?'
+            if (text.endsWith(' ') || text === '') {
                 return '¿';
             } else {
                 return '?';
             }
-        } else if (char === '⠖') { // Exclamación o símbolo +
-            if (isNumber || (nextChar && /[0-9]/.test(this.reversedMap[nextChar]))) {
-                return '+';
-            } else if (!prevChar || /[.\s]/.test(prevChar)) {
+        } else if (char === '⠖') {
+            // Determine whether to return '¡' or '!'
+            if (text.endsWith(' ') || text === '') {
                 return '¡';
             } else {
                 return '!';
             }
+        } else {
+            // Other punctuation marks
+            return this.reversedMap[char] || '';
         }
-        return '';
     }
     
     static translateChar(char, isCapital, isNumber) {
         let translatedChar = this.reversedMap[char] || char;
-        
+
         if (isCapital) {
             translatedChar = translatedChar.toUpperCase();
         }
@@ -135,6 +105,16 @@ class Braille {
             return false;
         }
         return isNumber;
+    }
+
+    static toBraille(text) {
+        return text.split(/(\d+)/).map(chunk => {
+            if (/\d/.test(chunk)) {
+                return '⠼' + [...chunk].map(char => brailleMap[char]).join('');
+            } else {
+                return [...chunk].map(char => brailleMap[char] || char).join('');
+            }
+        }).join('');
     }
 }
 
