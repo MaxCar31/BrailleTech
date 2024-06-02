@@ -8,10 +8,15 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html, body {
+  height: 100%; /* Asegura que html y body ocupen toda la altura */
+}
+
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 10px;
   min-height: 100vh;
   background: #0E578D;
@@ -25,11 +30,16 @@ body {
   border-radius: 7px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.01);
   text-align: center;
+  flex: 1; /* Permite que el contenedor crezca y ocupe el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .wrapper {
   border-radius: 5px;
   border: 1px solid #ccc;
+  margin-bottom: 20px; /* Añade margen inferior */
 }
 
 .text-input {
@@ -225,8 +235,7 @@ h2 {
 footer {
     text-align: center;
     color: white;
-    position: fixed;
-    bottom: 0;
     width: 100%;
-    margin-bottom: 50px;
+    padding: 10px 0;
+    background: #0E578D;
 }
