@@ -219,33 +219,30 @@ function downloadImage(element, filename) {
  */
 function downloadPDF(element, filename, margin = 10) {
     // Escalar el elemento para mejorar la calidad de la imagen en el PDF
-    const scale = 2;
-
+    const scale = 8;
     html2canvas(element, { scale: scale }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-
-        // Crear una nueva instancia de jsPDF
+        const mirrorCanvas = document.createElement('canvas');
+        mirrorCanvas.width = canvas.width;
+        mirrorCanvas.height = canvas.height;
+        const ctx = mirrorCanvas.getContext('2d');
+        ctx.scale(-1, 1);
+        ctx.drawImage(canvas, -canvas.width, 0);
+        const imgData = mirrorCanvas.toDataURL('image/png');
         let pdf = new jsPDF('p', 'mm', 'a4');
         const pdfWidth = pdf.internal.pageSize.getWidth() - 2 * margin;
         const pdfHeight = pdf.internal.pageSize.getHeight() - 2 * margin;
         const imgWidth = canvas.width / scale;
         const imgHeight = canvas.height / scale;
         const ratio = imgWidth / imgHeight;
-
-        // Calcular las dimensiones de la imagen para que se ajuste al tamaño del PDF manteniendo la proporción
         let newWidth, newHeight;
 
         if (imgWidth > imgHeight) {
-            // Si la imagen es más ancha que alta, ajustamos el ancho al ancho del PDF y calculamos la altura proporcionalmente
             newWidth = pdfWidth;
             newHeight = newWidth / ratio;
         } else {
-            // Si la imagen es más alta que ancha, ajustamos la altura a la altura del PDF y calculamos el ancho proporcionalmente
             newHeight = pdfHeight;
             newWidth = newHeight * ratio;
         }
-
-        // Asegurarse de que la imagen cabe en el PDF sin desbordarse
         if (newHeight > pdfHeight) {
             newHeight = pdfHeight;
             newWidth = newHeight * ratio;
@@ -254,14 +251,8 @@ function downloadPDF(element, filename, margin = 10) {
             newWidth = pdfWidth;
             newHeight = newWidth / ratio;
         }
-
-        // Añadir la imagen al PDF con márgenes
         pdf.addImage(imgData, 'PNG', margin, margin, newWidth, newHeight);
-
-        // Guardar el archivo PDF con el nombre especificado
         pdf.save(filename);
-
-        // Eliminar el elemento del DOM después de generar el PDF
         document.body.removeChild(element);
     });
 }
