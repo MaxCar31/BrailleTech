@@ -2,7 +2,7 @@
  * @fileoverview Este módulo proporciona una clase Braille para convertir texto a Braille y viceversa.
  */
 
-import brailleMap from './brailleMap';
+import brailleMap from '../data/brailleMap';
 
 /**
  * Clase que representa un convertidor de Braille.

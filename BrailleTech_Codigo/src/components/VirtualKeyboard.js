@@ -1,5 +1,5 @@
 // VirtualKeyboard.js
-import brailleMap from './brailleMap.js';
+import brailleMap from '../data/brailleMap.js';
 
 class VirtualKeyboard {
     constructor(inputElementId, keyboardLowercaseId, keyboardUppercaseId, keyboardAccentedId, keyboardNumbersId, keyboardSignsId) {
@@ -25,17 +25,17 @@ class VirtualKeyboard {
             'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü'
         ];
         this.numbers = [
-            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
+            '#','1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
         ];
         this.signs = [
-            ' ', '.', ',', ';', ':', '¿', '?', '¡', '!', '"', '(', ')'
+            '.', ',', ';', ':', '¿', '?', '¡', '!', '"', '(', ')'
         ];
         this.init();
     }
 
     createBrailleButton(char, braille) {
         const button = document.createElement('button');
-        button.textContent = `${braille} (${char})`;
+        button.textContent = `${braille} [${char}]`;
         button.addEventListener('click', () => {
             this.inputElement.value += braille;
         });

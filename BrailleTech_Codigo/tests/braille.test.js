@@ -1,5 +1,5 @@
 // tests/braille.test.js
-import Braille from '../src/braille';
+import Braille from '../src/utils/braille';
 
 //Pruebas de traducción de español a braille
 describe('Braille Translator - Spanish to Braille', () => {  //cdp9
