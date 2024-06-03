@@ -1,5 +1,5 @@
 // VirtualKeyboard.js
-import brailleMap from './brailleMap.js';
+import brailleMap from '../data/brailleMap.js';
 
 class VirtualKeyboard {
     constructor(inputElementId, keyboardLowercaseId, keyboardUppercaseId, keyboardAccentedId, keyboardNumbersId, keyboardSignsId) {
