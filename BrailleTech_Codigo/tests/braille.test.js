@@ -2,22 +2,22 @@
 import Braille from '../src/braille';
 
 //Pruebas de traducción de español a braille
-describe('Braille Translator - Spanish to Braille', () => {
+describe('Braille Translator - Spanish to Braille', () => {  //cdp9
   test('should translate a letter correctly', () => {
     const input = 'z';
     const expectedOutput = '⠵';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('should translate a word correctly', () => {
+  test('should translate a word correctly', () => { 
     const input = 'prueba';
     const expectedOutput = '⠏⠗⠥⠑⠃⠁';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('should handle empty string correctly', () => {
-    const input = '';
-    const expectedOutput = '';
+  test('should handle empty string correctly', () => { //cdp10
+    const input = 'a b';
+    const expectedOutput = '⠁ ⠃';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
@@ -27,7 +27,7 @@ describe('Braille Translator - Spanish to Braille', () => {
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('should handle numbers correctly', () => {
+  test('should handle numbers correctly', () => { //cdp11
     const input = '1234567890';
     const expectedOutput = '⠼⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
@@ -39,7 +39,7 @@ describe('Braille Translator - Spanish to Braille', () => {
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('should handle uppercase characters correctly', () => {
+  test('should handle uppercase characters correctly', () => { //cdp12
     const input = 'Hola Juan';
     const expectedOutput = '⠨⠓⠕⠇⠁ ⠨⠚⠥⠁⠝';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
@@ -51,16 +51,22 @@ describe('Braille Translator - Spanish to Braille', () => {
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('Should translate a phrase containing accented letters correctly', () => {
+  test('Should translate a phrase containing accented letters correctly', () => { //cdp13
     const input = 'El niño comió la torta con alegría';
-    const expectedOutput = '⠼⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚';
+    const expectedOutput = '⠨⠑⠇⠀⠝⠊⠻⠕⠀⠉⠕⠍⠊⠬⠀⠇⠁⠀⠞⠕⠗⠞⠁⠀⠉⠕⠝⠀⠁⠇⠑⠛⠗⠌⠁';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('Should translate characters correctly', () => {
-    const input = '¿? ¡! . , +';
-    const expectedOutput = '⠢⠢⠀⠖⠖ ⠄ ⠂ ⠲';
-    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  test('translating a question', () => { //cdp14
+    const input = '¿A que hora nos vamos de aquí?';
+    const expectedOutput = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+
+  test('translating an exclamatory sentence ', () => {
+    const input = '¡No me grites!';
+    const expectedOutput = '⠖⠠⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖';
+    expect(Braille.toText(input)).toBe(expectedOutput);
   });
 });
 
@@ -73,19 +79,20 @@ describe('Braille Translator - Braille to Spanish', () => {
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('should translate a word correctly', () => {
+  test('should translate a word correctly', () => { //cdp15
     const expectedOutput = 'prueba';
     const input = '⠏⠗⠥⠑⠃⠁';
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
   test('should handle empty string correctly', () => {
-    const expectedOutput = '';
-    const input = '';
+    const expectedOutput = 'a b';
+    const input = '⠁ ⠃';
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
+
   
-  test('should translate a phrase correctly', () => {
+  test('should translate a phrase correctly', () => { //cdp16
     const expectedOutput = 'esta es una prueba';
     const input = '⠑⠎⠞⠁⠀⠑⠎⠀⠥⠝⠁⠀⠏⠗⠥⠑⠃⠁';
     expect(Braille.toText(input)).toBe(expectedOutput);
@@ -97,7 +104,7 @@ describe('Braille Translator - Braille to Spanish', () => {
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('Should translate a phrase containing numbers correctly', () => {
+  test('Should translate a phrase containing numbers correctly', () => { //cdp17
     const expectedOutput = '2003 fue un bonito año';
     const input = '⠼⠃⠚⠚⠉⠀⠋⠥⠑⠀⠥⠝⠀⠃⠕⠝⠊⠞⠕⠀⠁⠻⠕';
     expect(Braille.toText(input)).toBe(expectedOutput);
@@ -109,7 +116,7 @@ describe('Braille Translator - Braille to Spanish', () => {
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('should handle accented characters correctly', () => {
+  test('should handle accented characters correctly', () => { //cdp18
     const expectedOutput = 'áéíóúüñ';
     const input = '⠷⠮⠌⠬⠾⠳⠻';
     expect(Braille.toText(input)).toBe(expectedOutput);
@@ -117,13 +124,19 @@ describe('Braille Translator - Braille to Spanish', () => {
   
   test('Should translate a phrase containing accented letters correctly', () => {
     const expectedOutput = 'El niño comió la torta con alegría';
-    const input = '⠼⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚';
+    const input = '⠨⠑⠇⠀⠝⠊⠻⠕⠀⠉⠕⠍⠊⠬⠀⠇⠁⠀⠞⠕⠗⠞⠁⠀⠉⠕⠝⠀⠁⠇⠑⠛⠗⠌⠁';
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('Should translate characters correctly', () => {
-    const expectedOutput = '¿? ¡! . , +';
-    const input = '⠢⠢⠀⠖⠖ ⠄ ⠂ ⠲';
+  test('translating a question', () => {
+    const expectedOutput = '¿A que hora nos vamos de aquí?';
+    const input = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
     expect(Braille.toText(input)).toBe(expectedOutput);
-  });  
+  });
+
+  test('translating an exclamatory sentence', () => { //cdp19
+    const expectedOutput = '¡No me grites!';
+    const input = '⠖⠠⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
 });
