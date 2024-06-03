@@ -164,6 +164,13 @@ body {
   transform: scale(0.9);
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espacio entre los botones */
+  margin-top: 20px; /* Añade un poco de espacio superior si es necesario */
+}
+/*
 .translate-btn {
   width: 100%;
   padding: 14px;
@@ -171,13 +178,11 @@ body {
   border: none;
   color: #fff;
   cursor: pointer;
-  margin-top: 20px;
   font-size: 17px;
   border-radius: 5px;
   background: #0E578D;
-  transition: background 0.3s ease;
 }
-
+*/
 .translate-btn:hover {
   background: #084C85;
 }
@@ -288,7 +293,7 @@ h2 {
   margin-top: 20px; /* Añade un poco de espacio superior si es necesario */
 }
 
-.download-btn {
+.translate-btn, .download-btn {
   padding: 16px;
   outline: none;
   border: none;
@@ -296,10 +301,11 @@ h2 {
   cursor: pointer;
   font-size: 17px;
   border-radius: 5px;
-  background: #5372F0;
+  background: #084C85;
   flex: 1; /* Hace que ambos botones tengan el mismo tamaño */
   min-width: 300px; /* Establece un ancho máximo para los botones */
 }
+
 
 
 #logo {
