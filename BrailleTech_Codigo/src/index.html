@@ -7,55 +7,77 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome CDN Link for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   
 </head>
 <body>
-
-    <div class="container">
-        <img id="logo" src="https://github.com/MaxCar31/BrailleTech/assets/141116497/bb746657-6220-4f87-a121-1bb73f7c927f"  alt="logo">
-        <div class="wrapper">
-              <div class="text-input">
-                <textarea spellcheck="false" id="inputText" placeholder="Escribe aquí..."></textarea>
-                <textarea spellcheck="false" readonly disabled id="outputText" class="output" placeholder="Traducción"></textarea>
+    <div class="main-container">
+        <div class="translator-container">
+            <img id="logo" src="https://github.com/MaxCar31/BrailleTech/assets/141116497/bb746657-6220-4f87-a121-1bb73f7c927f" alt="logo">
+            <div class="wrapper">
+                <div class="text-input">
+                    <textarea spellcheck="false" id="inputText" placeholder="Escribe aquí..."></textarea>
+                    <textarea spellcheck="false" readonly disabled id="outputText" class="output" placeholder="Traducción"></textarea>
+                </div>
+                <ul class="controls">
+                    <li class="row from">
+                        <div class="icons">
+                            <i id="soundFrom" class="fas fa-volume-up"></i>
+                            <i id="copyFrom" class="fas fa-copy"></i>
+                        </div>
+                        <select id="inputLanguage" class="language-select" disabled>
+                            <option value="espanol">Español</option>
+                            <option value="braille">Braille</option>
+                        </select>
+                    </li>
+                    <li class="exchange"><i class="fas fa-exchange-alt" id="swapLanguages"></i></li>
+                    <li class="row to">
+                        <select id="outputLanguage" class="language-select" disabled>
+                            <option value="braille">Braille</option>
+                            <option value="espanol">Español</option>
+                        </select>
+                        <div class="icons">
+                            <i id="soundTo" class="fas fa-volume-up"></i>
+                            <i id="copyTo" class="fas fa-copy"></i>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <ul class="controls">
-                <li class="row from">
-                    <div class="icons">
-                        <i id="soundFrom" class="fas fa-volume-up"></i>
-                        <i id="copyFrom" class="fas fa-copy"></i>
-                    </div>
-                    <select id="inputLanguage" class="language-select" disabled>
-                        <option value="espanol">Español</option>
-                        <option value="braille">Braille</option>
-                    </select>
-                </li>
-                <li class="exchange"><i class="fas fa-exchange-alt" id="swapLanguages"></i></li>
-                <li class="row to">
-                    <select id="outputLanguage" class="language-select" disabled>
-                        <option value="braille">Braille</option>
-                        <option value="espanol">Español</option>
-                    </select>
-                    <div class="icons">
-                        <i id="soundTo" class="fas fa-volume-up"></i>
-                        <i id="copyTo" class="fas fa-copy"></i>
-                    </div>
-                </li>
-            </ul>
+            <button id="translate" class="translate-btn">Traducir</button>
+            <h2>Descargar Señaléticas</h2>
+            <div class="signage-section">
+                <button id="downloadSignageBtn" class="download-btn">Formato Normal</button>                
+                <button id="downloadMirrorImageBtn" class="download-btn">Formato Espejo</button>
+            </div>
         </div>
-        <button id="translate" class="translate-btn">Traducir</button>
-        <h2>Descargar Señaléticas</h2>
-        <div class="signage-section">
-            <button id="downloadSignageBtn" class="download-btn">Formato Normal</button>                
-            <button id="downloadMirrorImageBtn" class="download-btn">Formato Espejo</button>
+        
+        <div class="keyboard-container">
+            <div class="keyboard-section">
+                <h3>Teclado Virtual</h3>
+                <div id="brailleKeyboardLettersLowercase" class="braille-keyboard"></div>
+            </div>
+            <div class="keyboard-section">
+                <h3></h3>
+                <div id="brailleKeyboardLettersUppercase" class="braille-keyboard"></div>
+            </div>
+            <div class="keyboard-section">
+                <h3></h3>
+                <div id="brailleKeyboardLettersAccented" class="braille-keyboard"></div>
+            </div>
+            <div class="keyboard-section">
+                <h3>Números</h3>
+                <div id="brailleKeyboardNumbers" class="braille-keyboard"></div>
+            </div>
+            <div class="keyboard-section">
+                <h3>Signos</h3>
+                <div id="brailleKeyboardSigns" class="braille-keyboard"></div>
+            </div>
         </div>
     </div>
-    <footer>
-        <p>BrailleTech todos los derechos reservados &copy; 2024</p>
-    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="brailleMap.js"></script>
     <script src="validator.js"></script>
+    <script src="VirtualKeyboard.js"></script>
     <script src="index.js"></script>
 </body>
-
 </html>
