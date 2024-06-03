@@ -1,6 +1,7 @@
 import html2canvas from 'html2canvas';
 import './style.css';
 import Braille from './braille';
+import VirtualKeyboard from './VirtualKeyboard.js';
 
 
 /**
@@ -51,6 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const soundFrom = document.getElementById('soundFrom');
     const soundTo = document.getElementById('soundTo');
     const outputText = document.getElementById('outputText');
+
+    new VirtualKeyboard(
+        'inputText', 
+        'brailleKeyboardLettersLowercase', 
+        'brailleKeyboardLettersUppercase',
+        'brailleKeyboardLettersAccented',
+        'brailleKeyboardNumbers', 
+        'brailleKeyboardSigns'
+    );
+
 
    // Evento para leer en voz alta el texto de entrada
     soundFrom.addEventListener('click', () => {
@@ -234,15 +245,22 @@ function downloadPDF(element, filename, margin = 10) {
         const imgWidth = canvas.width / scale;
         const imgHeight = canvas.height / scale;
         const ratio = imgWidth / imgHeight;
+        
+
+        // Calcular las dimensiones de la imagen para que se ajuste al tamaño del PDF manteniendo la proporción
         let newWidth, newHeight;
 
         if (imgWidth > imgHeight) {
+            // Si la imagen es más ancha que alta, ajustamos el ancho al ancho del PDF y calculamos la altura proporcionalmente
             newWidth = pdfWidth;
             newHeight = newWidth / ratio;
         } else {
+            // Si la imagen es más alta que ancha, ajustamos la altura a la altura del PDF y calculamos el ancho proporcionalmente
             newHeight = pdfHeight;
             newWidth = newHeight * ratio;
         }
+
+        // Asegurarse de que la imagen cabe en el PDF sin desbordarse
         if (newHeight > pdfHeight) {
             newHeight = pdfHeight;
             newWidth = newHeight * ratio;
@@ -251,8 +269,14 @@ function downloadPDF(element, filename, margin = 10) {
             newWidth = pdfWidth;
             newHeight = newWidth / ratio;
         }
+
+        // Añadir la imagen al PDF con márgenes
         pdf.addImage(imgData, 'PNG', margin, margin, newWidth, newHeight);
+
+        // Guardar el archivo PDF con el nombre especificado
         pdf.save(filename);
+
+        // Eliminar el elemento del DOM después de generar el PDF
         document.body.removeChild(element);
     });
 }
