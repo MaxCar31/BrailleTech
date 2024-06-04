@@ -88,7 +88,14 @@ export function initializeEventHandlers() {
             return;
         }
 
-        let inputText = document.getElementById('inputText').value;
+        let inputText = document.getElementById('inputText').value
+        
+        // Verificar si el campo de texto está vacío
+        if (inputText.trim() === '') {
+            alert('No se puede descargar. El campo de texto está vacío.');
+            return;
+        }
+
         inputText = addLineBreaks(inputText);  
         const brailleOutput = Braille.toBraille(inputText);
         const signageElement = createSignageElement(inputText, brailleOutput);
@@ -103,6 +110,12 @@ export function initializeEventHandlers() {
             return;
         }
         let inputText = document.getElementById('inputText').value;
+
+        // Verificar si el campo de texto está vacío
+        if (inputText.trim() === '') {
+            alert('No se puede descargar. El campo de texto está vacío.');
+            return;
+        }
         inputText = addLineBreaks(inputText);  
         let brailleOutput = '';
         brailleOutput = Braille.toBraille(inputText);               
