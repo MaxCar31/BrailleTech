@@ -39,7 +39,7 @@ describe('Braille Translator - Spanish to Braille', () => {  //cdp9
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('should handle uppercase characters correctly', () => { //cdp12
+  test('should handle uppercase characters correctly', () => { 
     const input = 'Hola Juan';
     const expectedOutput = '⠨⠓⠕⠇⠁ ⠨⠚⠥⠁⠝';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
@@ -51,13 +51,13 @@ describe('Braille Translator - Spanish to Braille', () => {  //cdp9
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('Should translate a phrase containing accented letters correctly', () => { //cdp13
+  test('Should translate a phrase containing accented letters correctly', () => { //cdp12
     const input = 'El niño comió la torta con alegría';
     const expectedOutput = '⠨⠑⠇⠀⠝⠊⠻⠕⠀⠉⠕⠍⠊⠬⠀⠇⠁⠀⠞⠕⠗⠞⠁⠀⠉⠕⠝⠀⠁⠇⠑⠛⠗⠌⠁';
     expect(Braille.toBraille(input)).toBe(expectedOutput);
   });
 
-  test('translating a question', () => { //cdp14
+  test('translating a question', () => { //cdp13
     const input = '¿A que hora nos vamos de aquí?';
     const expectedOutput = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
     expect(Braille.toText(input)).toBe(expectedOutput);
