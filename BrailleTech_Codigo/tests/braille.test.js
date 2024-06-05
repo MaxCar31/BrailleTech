@@ -79,7 +79,7 @@ describe('Braille Translator - Braille to Spanish', () => {
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('should translate a word correctly', () => { //cdp15
+  test('should translate a word correctly', () => { //cdp14
     const expectedOutput = 'prueba';
     const input = '⠏⠗⠥⠑⠃⠁';
     expect(Braille.toText(input)).toBe(expectedOutput);
@@ -92,19 +92,19 @@ describe('Braille Translator - Braille to Spanish', () => {
   });
 
   
-  test('should translate a phrase correctly', () => { //cdp16
+  test('should translate a phrase correctly', () => { //cdp15
     const expectedOutput = 'esta es una prueba';
     const input = '⠑⠎⠞⠁⠀⠑⠎⠀⠥⠝⠁⠀⠏⠗⠥⠑⠃⠁';
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('should handle numbers correctly', () => {
+  test('should handle numbers correctly', () => { 
     const expectedOutput = '1234567890';
     const input = '⠼⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚';
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('Should translate a phrase containing numbers correctly', () => { //cdp17
+  test('Should translate a phrase containing numbers correctly', () => { //cdp16
     const expectedOutput = '2003 fue un bonito año';
     const input = '⠼⠃⠚⠚⠉⠀⠋⠥⠑⠀⠥⠝⠀⠃⠕⠝⠊⠞⠕⠀⠁⠻⠕';
     expect(Braille.toText(input)).toBe(expectedOutput);
@@ -116,7 +116,7 @@ describe('Braille Translator - Braille to Spanish', () => {
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
   
-  test('should handle accented characters correctly', () => { //cdp18
+  test('should handle accented characters correctly', () => { //cdp17
     const expectedOutput = 'áéíóúüñ';
     const input = '⠷⠮⠌⠬⠾⠳⠻';
     expect(Braille.toText(input)).toBe(expectedOutput);
@@ -134,9 +134,9 @@ describe('Braille Translator - Braille to Spanish', () => {
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
 
-  test('translating an exclamatory sentence', () => { //cdp19
+  test('translating an exclamatory sentence', () => { //cdp18
     const expectedOutput = '¡No me grites!';
-    const input = '⠖⠠⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖';
+    const input = '⠖⠨⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖';
     expect(Braille.toText(input)).toBe(expectedOutput);
   });
 });
