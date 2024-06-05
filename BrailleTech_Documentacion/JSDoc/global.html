@@ -94,30 +94,83 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id="brailleMap"><span class="type-signature">(constant) </span>brailleMap<span class="type-signature"> :Object.&lt;string, string></span></h4>
 
+    
+
+    
+    <h4 class="name" id="addLineBreaks"><span class="type-signature"></span>addLineBreaks<span class="signature">(text)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
 
 
 
 <div class="description">
-    Objeto que mapea caracteres a su representación en Braille.
+    Agrega saltos de línea cada cierto número de palabras.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<span class="param-type">Object.&lt;string, string></span>
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
-        </li>
-    </ul>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">El texto a modificar.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -152,7 +205,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="brailleMap.js.html">brailleMap.js</a>, <a href="brailleMap.js.html#line9">line 9</a>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -168,11 +221,41 @@
 
 
 
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
-    
+<div class="param-desc">
+    El texto con saltos de línea.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
-        <h3 class="subsection-title">Methods</h3>
+
+
+
+
 
         
             
@@ -281,7 +364,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line175">line 175</a>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -463,7 +546,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line133">line 133</a>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line97">line 97</a>
     </li></ul></dd>
     
 
@@ -645,7 +728,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line158">line 158</a>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -681,7 +764,7 @@
     
 
     
-    <h4 class="name" id="downloadPDF"><span class="type-signature"></span>downloadPDF<span class="signature">(element, filename)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="downloadPDF"><span class="type-signature"></span>downloadPDF<span class="signature">(element, filename, margin)</span><span class="type-signature"></span></h4>
     
 
     
@@ -768,130 +851,16 @@
         </tr>
 
     
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line195">line 195</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="fromBraille"><span class="type-signature"></span>fromBraille<span class="signature">(brailleText)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Convierte un texto en Braille a texto normal.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
 
         <tr>
             
-                <td class="name"><code>brailleText</code></td>
+                <td class="name"><code>margin</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -901,7 +870,7 @@
 
             
 
-            <td class="description last">El texto en Braille a convertir.</td>
+            <td class="description last">El margen en milímetros para el PDF.</td>
         </tr>
 
     
@@ -942,7 +911,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line20">line 20</a>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -967,187 +936,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    El texto convertido a texto normal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="toBraille"><span class="type-signature"></span>toBraille<span class="signature">(text)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Convierte un texto a Braille.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>text</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">El texto a convertir.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line11">line 11</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    El texto convertido a Braille.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1169,13 +957,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Braille.html">Braille</a></li></ul><h3>Global</h3><ul><li><a href="global.html#brailleMap">brailleMap</a></li><li><a href="global.html#createMirrorElement">createMirrorElement</a></li><li><a href="global.html#createSignageElement">createSignageElement</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#downloadPDF">downloadPDF</a></li><li><a href="global.html#fromBraille">fromBraille</a></li><li><a href="global.html#toBraille">toBraille</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addLineBreaks">addLineBreaks</a></li><li><a href="global.html#createMirrorElement">createMirrorElement</a></li><li><a href="global.html#createSignageElement">createSignageElement</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#downloadPDF">downloadPDF</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sat May 25 2024 21:42:27 GMT-0500 (hora de Ecuador)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 05 2024 12:02:41 GMT-0500 (hora de Ecuador)
 </footer>
 
 <script> prettyPrint(); </script>

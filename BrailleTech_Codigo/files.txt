@@ -1,0 +1,7 @@
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\index.js
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\components\VirtualKeyboard.js
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\data\brailleMap.js
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\handlers\eventHandlers.js
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\utils\braille.js
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\utils\translator.js
+C:\Users\PC\Desktop\Jonathan\6to semestre\Calidad de SW\ProyectoV2\BrailleTech\BrailleTech_Codigo\src\utils\utils.js
