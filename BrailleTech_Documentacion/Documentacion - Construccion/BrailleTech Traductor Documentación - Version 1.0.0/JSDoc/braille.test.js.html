@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: braille.test.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: braille.test.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Pruebas unitarias para el módulo Braille.
+ * @module BrailleTests
+ */
+// tests/braille.test.js
+import Braille from '../src/utils/braille';
+
+/**
+ * Pruebas de traducción de español a braille.
+ */
+describe('Braille Translator - Spanish to Braille', () => {  //cdp9
+  /**
+   * Prueba para verificar la traducción de una letra correctamente.
+   * @test {toBraille}
+   */
+  test('should translate a letter correctly', () => {
+    const input = 'z';
+    const expectedOutput = '⠵';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('should translate a word correctly', () => { 
+    const input = 'prueba';
+    const expectedOutput = '⠏⠗⠥⠑⠃⠁';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('should handle empty string correctly', () => { //cdp10
+    const input = 'a b';
+    const expectedOutput = '⠁ ⠃';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('should translate a phrase correctly', () => {
+    const input = 'esta es una prueba';
+    const expectedOutput = '⠑⠎⠞⠁⠀⠑⠎⠀⠥⠝⠁⠀⠏⠗⠥⠑⠃⠁';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('should handle numbers correctly', () => { //cdp11
+    const input = '1234567890';
+    const expectedOutput = '⠼⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+  
+  test('Should translate a phrase containing numbers correctly', () => {
+    const input = '2003 fue un bonito año';
+    const expectedOutput = '⠼⠃⠚⠚⠉⠀⠋⠥⠑⠀⠥⠝⠀⠃⠕⠝⠊⠞⠕⠀⠁⠻⠕';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('should handle uppercase characters correctly', () => { 
+    const input = 'Hola Juan';
+    const expectedOutput = '⠨⠓⠕⠇⠁ ⠨⠚⠥⠁⠝';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('should handle accented characters correctly', () => {
+    const input = 'áéíóúüñ';
+    const expectedOutput = '⠷⠮⠌⠬⠾⠳⠻';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('Should translate a phrase containing accented letters correctly', () => { //cdp12
+    const input = 'El niño comió la torta con alegría';
+    const expectedOutput = '⠨⠑⠇⠀⠝⠊⠻⠕⠀⠉⠕⠍⠊⠬⠀⠇⠁⠀⠞⠕⠗⠞⠁⠀⠉⠕⠝⠀⠁⠇⠑⠛⠗⠌⠁';
+    expect(Braille.toBraille(input)).toBe(expectedOutput);
+  });
+
+  test('translating a question', () => { //cdp13
+    const input = '¿A que hora nos vamos de aquí?';
+    const expectedOutput = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+
+  test('translating an exclamatory sentence ', () => {
+    const input = '¡No me grites!';
+    const expectedOutput = '⠖⠠⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+});
+
+/**
+ * Pruebas de traducción de braille a español.
+ */
+describe('Braille Translator - Braille to Spanish', () => {
+
+  test('should translate a letter correctly', () => {
+    const expectedOutput = 'z';
+    const input = '⠵';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('should translate a word correctly', () => { //cdp14
+    const expectedOutput = 'prueba';
+    const input = '⠏⠗⠥⠑⠃⠁';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('should handle empty string correctly', () => {
+    const expectedOutput = 'a b';
+    const input = '⠁ ⠃';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+
+  
+  test('should translate a phrase correctly', () => { //cdp15
+    const expectedOutput = 'esta es una prueba';
+    const input = '⠑⠎⠞⠁⠀⠑⠎⠀⠥⠝⠁⠀⠏⠗⠥⠑⠃⠁';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('should handle numbers correctly', () => { 
+    const expectedOutput = '1234567890';
+    const input = '⠼⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('Should translate a phrase containing numbers correctly', () => { //cdp16
+    const expectedOutput = '2003 fue un bonito año';
+    const input = '⠼⠃⠚⠚⠉⠀⠋⠥⠑⠀⠥⠝⠀⠃⠕⠝⠊⠞⠕⠀⠁⠻⠕';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('should handle uppercase characters correctly', () => {
+    const expectedOutput = 'Hola Juan';
+    const input = '⠨⠓⠕⠇⠁ ⠨⠚⠥⠁⠝';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('should handle accented characters correctly', () => { //cdp17
+    const expectedOutput = 'áéíóúüñ';
+    const input = '⠷⠮⠌⠬⠾⠳⠻';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('Should translate a phrase containing accented letters correctly', () => {
+    const expectedOutput = 'El niño comió la torta con alegría';
+    const input = '⠨⠑⠇⠀⠝⠊⠻⠕⠀⠉⠕⠍⠊⠬⠀⠇⠁⠀⠞⠕⠗⠞⠁⠀⠉⠕⠝⠀⠁⠇⠑⠛⠗⠌⠁';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+  
+  test('translating a question', () => {
+    const expectedOutput = '¿A que hora nos vamos de aquí?';
+    const input = '⠢⠠⠁⠀⠟⠥⠑⠀⠓⠕⠗⠁⠀⠝⠕⠎⠀⠧⠁⠍⠕⠎⠀⠙⠑⠀⠁⠟⠥⠌⠢';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+
+  test('translating an exclamatory sentence', () => { //cdp18
+    const expectedOutput = '¡No me grites!';
+    const input = '⠖⠨⠝⠕⠀⠍⠑⠀⠛⠗⠊⠞⠑⠎⠖';
+    expect(Braille.toText(input)).toBe(expectedOutput);
+  });
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-BrailleTests.html">BrailleTests</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 05 2024 12:19:11 GMT-0500 (hora de Ecuador)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
