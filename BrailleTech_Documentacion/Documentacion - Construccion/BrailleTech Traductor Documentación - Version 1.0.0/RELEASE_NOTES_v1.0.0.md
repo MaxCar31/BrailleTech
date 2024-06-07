@@ -1,4 +1,4 @@
-# Notas de la Versión 1.0 - Traductor de Braille
+# Notas de la Versión 1.0.0 - Traductor de Braille
 
 ### Fecha de Lanzamiento: 5 de Junio de 2024
 
