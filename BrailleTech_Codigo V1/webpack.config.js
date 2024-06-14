@@ -23,19 +23,43 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[hash].[ext]',
+                            outputPath: 'images',
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.html$/,
+                use: ['html-loader'],
+            },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/pages/Traductor.html',
             filename: 'index.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/pages/acerca.html',
+            filename: 'acerca.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/pages/Testimonios.html',
+            filename: 'testimonios.html',
         }),
     ],
     devServer: {
         static: path.join(__dirname, 'dist'),
         compress: true,
         port: 80,
-        open: true, // Para abrir automáticamente en el navegador
+        open: true,
     },
     mode: 'development',
 };
