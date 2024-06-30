@@ -44,7 +44,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/pages/Traductor.html',
-            filename: 'index.html',
+            filename: 'Traductor.html',
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/acerca.html',
@@ -52,7 +52,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/Testimonios.html',
-            filename: 'testimonios.html',
+            filename: 'Testimonios.html',
         }),
     ],
     devServer: {
