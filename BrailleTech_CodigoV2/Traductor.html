@@ -113,36 +113,34 @@
             </section>
             <br><br>
         
-        <section id="virtualKeyboardSection" class="floating-panel" style="display: none;">
-
-            <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
-                <div class="card-body p-5">
-                    <!-- Barra de título para arrastrar -->
+            <section id="virtualKeyboardSection" class="floating-panel" style="display: none;">
+                <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
+                  <div class="card-body p-5">
                     <div id="keyboardPanelHeader" class="floating-panel-header">
-                        <button id="closeKeyboardPanel" class="btn-close float-end" aria-label="Close"></button>
-                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Teclado Virtual</span></h3>
+                      <button id="closeKeyboardPanel" class="btn-close float-end" aria-label="Close"></button>
+                      <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Teclado Virtual</span></h3>
+                      <br>
                     </div>
-                    <!-- Contenido del panel -->
                     <div class="keyboard-container">
-                        <div class="keyboard-section">
-                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Abecedario</span></h3><br>
-                            <div id="brailleKeyboardLettersLowercase" class="braille-keyboard"></div><br>
-                            <div id="brailleKeyboardLettersUppercase" class="braille-keyboard"></div><br>
-                            <div id="brailleKeyboardLettersAccented" class="braille-keyboard"></div><br>
-                        </div>
-                        <div class="keyboard-section">
-                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Números</span></h3><br>
-                            <div id="brailleKeyboardNumbers" class="braille-keyboard"></div><br>
-                        </div>
-                        <div class="keyboard-section">
-                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Signos</span></h3><br>
-                            <div id="brailleKeyboardSigns" class="braille-keyboard"></div>
-                        </div>
+                      <div class="keyboard-section">
+                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Abecedario</span></h3>
+                        <br>
+                        <div id="brailleKeyboardLettersLowercase" class="braille-keyboard"></div><br>
+                        <div id="brailleKeyboardLettersUppercase" class="braille-keyboard"></div><br>
+                        <div id="brailleKeyboardLettersAccented" class="braille-keyboard"></div>
+                      </div>
+                      <div class="keyboard-section">
+                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Números</span></h3><br>
+                        <div id="brailleKeyboardNumbers" class="braille-keyboard"></div>
+                      </div>
+                      <div class="keyboard-section">
+                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Signos</span></h3><br>
+                        <div id="brailleKeyboardSigns" class="braille-keyboard"></div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </section>
-
+              </section>
         <br><br>           
 
 
@@ -216,26 +214,31 @@
 <script type="module" src="src/main.js"></script>
 <script type="module" src="src/darkMode.js"></script>
 <script>
-document.addEventListener('keydown', function(event) {
-    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const focusable = Array.prototype.slice.call(document.querySelectorAll(focusableElements));
-    const index = focusable.indexOf(document.activeElement);
-    if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-        event.preventDefault();
-        const nextElement = focusable[index + 1] || focusable[0];
-        nextElement.focus();
-    }
-    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-        event.preventDefault();
-        const previousElement = focusable[index - 1] || focusable[focusable.length - 1];
-        previousElement.focus();
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  const virtualKeyboardSection = document.getElementById('virtualKeyboardSection');
+  const closeKeyboardPanel = document.getElementById('closeKeyboardPanel');
+  const toggleKeyboardBtn = document.getElementById('toggleKeyboardBtn'); // Asegúrate de tener un botón para abrir el teclado
+
+  if (toggleKeyboardBtn) {
+    toggleKeyboardBtn.addEventListener('click', () => {
+      virtualKeyboardSection.style.display = 'block';
+    });
+  }
+
+  if (closeKeyboardPanel) {
+    closeKeyboardPanel.addEventListener('click', () => {
+      virtualKeyboardSection.style.display = 'none';
+    });
+  }
+
+  const sections = document.querySelectorAll('.keyboard-section h3');
+  sections.forEach(section => {
+    section.addEventListener('click', () => {
+      section.parentElement.classList.toggle('collapsed');
+    });
+  });
 });
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        document.activeElement.click();
-    }
-});
+
 </script>
 </body>
 </html>
