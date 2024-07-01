@@ -17,7 +17,7 @@ BrailleTech es un proyecto que ofrece herramientas para la transcripción de tex
 3. Para generar señalética braille a partir de un texto en español, escribe el texto en el campo adecuado y haz clic en "Generar Señalética".
 4. Para generar una impresión en espejo de un texto en braille, introduce el texto en el campo correspondiente y haz clic en "Generar Impresión en Espejo".
 
-![image](https://github.com/MaxCar31/BrailleTech/assets/141116497/90f6625b-853a-4c19-8ea9-c81290868e0e)
+![image](https://github.com/MaxCar31/BrailleTech/assets/94008713/57a32b82-9b48-41e7-82ab-465126d9ae00)
 
 
 ## Instrucciones de Instalación y Ejecución 
@@ -99,7 +99,7 @@ Usa el siguiente comando para iniciar el servidor de desarrollo:
 
 
 ```bash
-npm start
+npm run dev
 ```
 
 
