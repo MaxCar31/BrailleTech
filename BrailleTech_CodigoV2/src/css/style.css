@@ -12177,3 +12177,29 @@ body.dark-mode .braille-keyboard button:hover {
 body.dark-mode .braille-keyboard button:active {
   background-color: #555;
 }
+
+/* Estilos para el panel flotante */
+.floating-panel {
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  width: 1200px; /* Ajusta el ancho según sea necesario */
+  height: auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Estilos para la barra de arrastre */
+.floating-panel-header {
+  cursor: move;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
