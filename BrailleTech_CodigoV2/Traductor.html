@@ -67,6 +67,10 @@
                                 <div class="icons">
                                     <i id="microphone" class="fas fa-microphone" tabindex="0"></i>
                                 </div>
+                                <div class="icons" id="keyboardIcon" style="display: none;">
+                                    <i class="fas fa-keyboard"></i>
+                                </div>
+
                                 <div class="icons"></div><div class="icons"></div><div class="icons"></div>    
                                 <select id="inputLanguage" class="language-select" disabled tabindex="0">
                                     <option value="espanol">Español</option>
@@ -109,38 +113,38 @@
             </section>
             <br><br>
         
-        <!-- Teclado Virtual Section -->
-        <section id="virtualKeyboardSection" class="py-0">
+        <section id="virtualKeyboardSection" class="floating-panel" style="display: none;">
+
             <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
                 <div class="card-body p-5">
-                    <!-- Título del Teclado Virtual -->
-                    <div class="mb-0">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-keyboard"></i></div>
-                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Teclado Virtual</span></h3>
+                    <!-- Barra de título para arrastrar -->
+                    <div id="keyboardPanelHeader" class="floating-panel-header">
+                        <button id="closeKeyboardPanel" class="btn-close float-end" aria-label="Close"></button>
+                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Teclado Virtual</span></h3>
+                    </div>
+                    <!-- Contenido del panel -->
+                    <div class="keyboard-container">
+                        <div class="keyboard-section">
+                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Abecedario</span></h3><br>
+                            <div id="brailleKeyboardLettersLowercase" class="braille-keyboard"></div><br>
+                            <div id="brailleKeyboardLettersUppercase" class="braille-keyboard"></div><br>
+                            <div id="brailleKeyboardLettersAccented" class="braille-keyboard"></div><br>
                         </div>
-                        <!-- Aquí va el teclado -->
-                        <div class="keyboard-container">
-                            <div class="keyboard-section">
-                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Abecedario</span></h3><br>
-                                <div id="brailleKeyboardLettersLowercase" class="braille-keyboard"></div><br>
-                                <div id="brailleKeyboardLettersUppercase" class="braille-keyboard"></div><br>
-                                <div id="brailleKeyboardLettersAccented" class="braille-keyboard"></div> <br>
-                            </div>
-                            <div class="keyboard-section">
-                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Números</span></h3><br>
-                                <div id="brailleKeyboardNumbers" class="braille-keyboard"></div><br>
-                            </div>
-                            <div class="keyboard-section">
-                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Signos</span></h3><br>
-                                <div id="brailleKeyboardSigns" class="braille-keyboard"></div>
-                            </div>
+                        <div class="keyboard-section">
+                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Números</span></h3><br>
+                            <div id="brailleKeyboardNumbers" class="braille-keyboard"></div><br>
+                        </div>
+                        <div class="keyboard-section">
+                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Signos</span></h3><br>
+                            <div id="brailleKeyboardSigns" class="braille-keyboard"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <br>           
+
+        <br><br>           
+
 
         <!-- Team Section -->
         <section class="py-0">

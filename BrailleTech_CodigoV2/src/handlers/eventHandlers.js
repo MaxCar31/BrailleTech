@@ -4,6 +4,8 @@ import { initializeCopyHandlers } from './events/copyHandler.js';
 import { initializeVoiceHandler } from './events/voiceHandler.js';
 import { initializeDownloadHandlers } from './events/downloadHandler.js';
 import { initializeSoundHandlers } from './events/soundHandler.js';
+import { initializeKeyboardIconHandler } from './events/keyboardIconHandler.js'; 
+
 
 /**
  * Inicializa todos los manejadores de eventos de la aplicación.
@@ -18,4 +20,5 @@ export function initializeEventHandlers() {
     initializeVoiceHandler();
     initializeDownloadHandlers();
     initializeSoundHandlers();
+    initializeKeyboardIconHandler(); 
 }
