@@ -107,7 +107,10 @@ npm run dev
 
 Para mayor claridad, aquí tienes una breve descripción de los scripts en tu archivo `package.json`:
 
-- `start`: Inicia el servidor de desarrollo utilizando Webpack y abre el proyecto en el navegador.
+- `dev`: nicia el servidor de desarrollo utilizando Vite y abre el proyecto en el navegador.
+- `build`: Construye el proyecto para producción utilizando Vite.
+- `serve`: Inicia un servidor para previsualizar la construcción de producción.
+- `preview`: Alias para serve, inicia un servidor para previsualizar la construcción de producción.
 - `test`: Ejecuta las pruebas utilizando Jest.
 - `docs`: Genera la documentación del proyecto utilizando JSDoc. (Tambien lo puedes encontrar en la carpeta Docs del repositorio)
 
