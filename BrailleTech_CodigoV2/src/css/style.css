@@ -12099,11 +12099,6 @@ body.dark-mode .btn-outline-dark:hover {
   color: #000000;
 }
 
-/* Añade más estilos según sea necesario */
-
-/* src/css/style.css */
-
-/* Estilos actuales */
 
 /* Modo oscuro */
 body.dark-mode {
@@ -12127,7 +12122,7 @@ body.dark-mode .btn-outline-dark:hover {
 
 /* Estilos específicos del traductor en modo oscuro */
 body.dark-mode .translator-container {
-  background-color: #1f1f1f;
+  background-color: #131314;
   color: #ffffff;
   border-color: #444;
 }
