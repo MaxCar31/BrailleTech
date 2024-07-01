@@ -48,7 +48,10 @@ class VoiceInput {
    * Inicia el reconocimiento de voz.
    */
   startListening() {
-    if (annyang) {
+    if (annyang && !annyang.isListening()) {
+      if (this.inputElement) {
+        this.inputElement.focus(); // Asegura que el input tenga el foco
+      }
       annyang.start({ autoRestart: true, continuous: true });
       console.log('Annyang listening started');  
       if (this.microphoneElement) {
@@ -61,7 +64,7 @@ class VoiceInput {
    * Detiene el reconocimiento de voz.
    */
   stopListening() {
-    if (annyang) {
+    if (annyang && annyang.isListening()) {
       annyang.abort();
       console.log('Annyang listening stopped'); 
       if (this.microphoneElement) {

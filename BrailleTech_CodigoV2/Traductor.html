@@ -24,16 +24,16 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Braille Tech</span></a>
+                <a class="navbar-brand" href="index.html" tabindex="0"><span class="fw-bolder text-primary">Braille Tech</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Traductor.html">Traductor Braille</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Testimonios.html">Testimonios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="acerca.html">Acerca de</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html" tabindex="0">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Traductor.html" tabindex="0">Traductor Braille</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Testimonios.html" tabindex="0">Testimonios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="acerca.html" tabindex="0">Acerca de</a></li>
                         <li class="nav-item">
-                            <button id="darkModeToggle" class="btn btn-outline-dark">Modo Oscuro</button>
+                            <button id="darkModeToggle" class="btn btn-outline-dark" tabindex="0">Modo Oscuro</button>
                         </li>
                     </ul>
                 </div>
@@ -49,43 +49,42 @@
             </div>
  
             <!-- Traductor Section-->
-                
             <section>
                 <div class="card shadow border-0 rounded-0 mb-30">
                     <div class="wrapper  p-4 rounded-0">
                         <div class="text-input">
-                            <textarea spellcheck="false" id="inputText" placeholder="Escribe aquí..."></textarea>
-                            <textarea spellcheck="false" readonly disabled id="outputText" class="output" placeholder="Traducción"></textarea>
+                            <textarea spellcheck="false" id="inputText" placeholder="Escribe aquí..." tabindex="0"></textarea>
+                            <textarea spellcheck="false" readonly disabled id="outputText" class="output" placeholder="Traducción" tabindex="0"></textarea>
                         </div>
                         <ul class="controls">
                             <li class="row from">
                                 <div class="icons">
-                                    <i id="soundFrom" class="fas fa-volume-up"></i>
+                                    <i id="soundFrom" class="fas fa-volume-up" tabindex="0"></i>
                                 </div>                              
                                 <div class="icons">
-                                    <i id="copyFrom" class="fas fa-copy"></i>
+                                    <i id="copyFrom" class="fas fa-copy" tabindex="0"></i>
                                 </div>
                                 <div class="icons">
-                                    <i id="microphone" class="fas fa-microphone"></i>
+                                    <i id="microphone" class="fas fa-microphone" tabindex="0"></i>
                                 </div>
                                 <div class="icons"></div><div class="icons"></div><div class="icons"></div>    
-                                <select id="inputLanguage" class="language-select" disabled>
+                                <select id="inputLanguage" class="language-select" disabled tabindex="0">
                                     <option value="espanol">Español</option>
                                     <option value="braille">Braille</option>
                                 </select>
                             </li>
-                            <li class="exchange"><i class="fas fa-exchange-alt" id="swapLanguages"></i></li>
+                            <li class="exchange"><i class="fas fa-exchange-alt" id="swapLanguages" tabindex="0"></i></li>
                             <li class="row to">
-                                <select id="outputLanguage" class="language-select" disabled>
+                                <select id="outputLanguage" class="language-select" disabled tabindex="0">
                                     <option value="braille">Braille</option>
                                     <option value="espanol">Español</option>
                                 </select>
                                 <div class="icons"></div><div class="icons"></div><div class="icons"></div>    
                                 <div class="icons">
-                                    <i id="soundTo" class="fas fa-volume-up"></i>
+                                    <i id="soundTo" class="fas fa-volume-up" tabindex="0"></i>
                                 </div>
                                 <div class="icons">
-                                    <i id="copyTo" class="fas fa-copy"></i>
+                                    <i id="copyTo" class="fas fa-copy" tabindex="0"></i>
                                 </div>
                                 <div class="icons">
                                     
@@ -94,13 +93,13 @@
                         </ul>
                     </div>
                     <div class="button-container">
-                        <button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" id="translate">Traducir</button>
-                        <button class="btn btn-primary px-4 py-3" id="clear">Borrar</button>
-                        <a class="btn btn-primary px-4 py-3" id="downloadSignageBtn" href="#!">
+                        <button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" id="translate" tabindex="0">Traducir</button>
+                        <button class="btn btn-primary px-4 py-3" id="clear" tabindex="0">Borrar</button>
+                        <a class="btn btn-primary px-4 py-3" id="downloadSignageBtn" href="#!" tabindex="0">
                             <div class="d-inline-block bi bi-download me-2"></div>
                             Descargar Señaletica
                         </a>
-                        <a class="btn btn-primary px-4 py-3" id="downloadMirrorImageBtn" href="#!">
+                        <a class="btn btn-primary px-4 py-3" id="downloadMirrorImageBtn" href="#!" tabindex="0">
                             <div class="d-inline-block bi bi-download me-2"></div>
                             Descargar Señaletica Espejo
                         </a>
@@ -110,7 +109,7 @@
             </section>
             <br><br>
         
-                    <!-- Teclado Virtual Section -->
+        <!-- Teclado Virtual Section -->
         <section id="virtualKeyboardSection" class="py-0">
             <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
                 <div class="card-body p-5">
@@ -141,9 +140,9 @@
                 </div>
             </div>
         </section>
- <br>           
+        <br>           
 
-                    <!-- Team Section -->
+        <!-- Team Section -->
         <section class="py-0">
             <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
                 <div class="card-body p-5">
@@ -212,5 +211,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script type="module" src="src/main.js"></script>
 <script type="module" src="src/darkMode.js"></script>
+<script>
+document.addEventListener('keydown', function(event) {
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusable = Array.prototype.slice.call(document.querySelectorAll(focusableElements));
+    const index = focusable.indexOf(document.activeElement);
+    if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        const nextElement = focusable[index + 1] || focusable[0];
+        nextElement.focus();
+    }
+    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        const previousElement = focusable[index - 1] || focusable[focusable.length - 1];
+        previousElement.focus();
+    }
+});
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        document.activeElement.click();
+    }
+});
+</script>
 </body>
 </html>
