@@ -3,26 +3,38 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 /**
- * Agrega saltos de línea cada cierto número de palabras.
+ * Agrega saltos de línea cada cierto número de caracteres y limita el número de líneas.
  * @param {string} text - El texto a modificar.
- * @returns {string} El texto con saltos de línea.
+ * @returns {string} El texto con saltos de línea y limitado a 25 líneas.
  */
 export function addLineBreaks(text) {
-    const maxWords = 7;
+    const maxCharsPerLine = 40;
+    const maxLines = 25;
     let words = text.split(/\s+/); // Dividir el texto en palabras
     let result = '';
     let lineWords = [];
+    let lineCount = 0;
+
     words.forEach(word => {
-        if ((lineWords.join(' ') + ' ' + word).split(/\s+/).length <= maxWords) {
+        if ((lineWords.join(' ') + ' ' + word).length <= maxCharsPerLine) {
             lineWords.push(word);
         } else {
-            result += lineWords.join(' ') + '\n';
-            lineWords = [word];
+            if (lineCount < maxLines) {
+                result += lineWords.join(' ') + '\n';
+                lineWords = [word];
+                lineCount++;
+            }
         }
     });
-    result += lineWords.join(' '); // Agregar la última línea de palabras
+
+    // Agregar la última línea de palabras si hay espacio para otra línea
+    if (lineCount < maxLines) {
+        result += lineWords.join(' ');
+    }
+
     return result.trim();
 }
+
 
 /**
  * Descarga una imagen del elemento dado.
@@ -30,10 +42,29 @@ export function addLineBreaks(text) {
  * @param {string} filename - El nombre del archivo de la imagen.
  */
 export function downloadImage(element, filename) {
-    html2canvas(element).then(canvas => {
+    html2canvas(element, {
+        useCORS: true,
+        scale: 2,  // aumentar la resolución del canvas para una mejor calidad
+    }).then(canvas => {
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Crear un nuevo canvas para la parte izquierda
+        const leftCanvas = document.createElement('canvas');
+        const leftContext = leftCanvas.getContext('2d');
+        const leftWidth = width / 3.5;  // Ancho de la mitad izquierda
+        const leftHeight = height;
+
+        leftCanvas.width = leftWidth;
+        leftCanvas.height = leftHeight;
+
+        // Copiar los datos del canvas original a la mitad izquierda del nuevo canvas
+        leftContext.drawImage(canvas, 0, 0, leftWidth, leftHeight, 0, 0, leftWidth, leftHeight);
+
+        // Descargar la imagen de la mitad izquierda
         const link = document.createElement('a');
         link.download = filename;
-        link.href = canvas.toDataURL();
+        link.href = leftCanvas.toDataURL();
         link.click();
         setTimeout(() => {
             document.body.removeChild(element);
@@ -42,26 +73,39 @@ export function downloadImage(element, filename) {
 }
 
 /**
- * Descarga un PDF del elemento dado.
+ * Descarga un PDF del elemento dado, cortando la imagen en dos y descargando solo la parte izquierda.
  * @param {HTMLElement} element - El elemento a convertir en PDF.
  * @param {string} filename - El nombre del archivo del PDF.
  * @param {number} margin - El margen en milímetros para el PDF.
  */
 export function downloadPDF(element, filename, margin = 10) {
-    const scale = 8;
+    const scale = 3;
     html2canvas(element, { scale: scale }).then(canvas => {
-        const mirrorCanvas = document.createElement('canvas');
-        mirrorCanvas.width = canvas.width;
-        mirrorCanvas.height = canvas.height;
-        const ctx = mirrorCanvas.getContext('2d');
-        ctx.scale(-1, 1);
-        ctx.drawImage(canvas, -canvas.width, 0);
-        const imgData = mirrorCanvas.toDataURL('image/png');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Crear un nuevo canvas para la parte izquierda
+        const leftCanvas = document.createElement('canvas');
+        const leftContext = leftCanvas.getContext('2d');
+        
+        const leftWidth = width / 3.5;  // Ancho de la mitad izquierda
+        const leftHeight = height;
+
+        leftCanvas.width = leftWidth;
+        leftCanvas.height = leftHeight;
+
+            // Invertir la imagen horizontalmente
+    leftContext.translate(leftWidth, 0);
+    leftContext.scale(-1, 1);
+        // Copiar los datos del canvas original a la mitad izquierda del nuevo canvas
+        leftContext.drawImage(canvas, 0, 0, leftWidth, leftHeight, 0, 0, leftWidth, leftHeight);
+
+        const imgData = leftCanvas.toDataURL('image/png');
         let pdf = new jsPDF('p', 'mm', 'a4');
         const pdfWidth = pdf.internal.pageSize.getWidth() - 2 * margin;
         const pdfHeight = pdf.internal.pageSize.getHeight() - 2 * margin;
-        const imgWidth = canvas.width / scale;
-        const imgHeight = canvas.height / scale;
+        const imgWidth = leftCanvas.width / scale;
+        const imgHeight = leftCanvas.height / scale;
         const ratio = imgWidth / imgHeight;
 
         let newWidth, newHeight;
