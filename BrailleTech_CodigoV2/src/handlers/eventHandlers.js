@@ -1,6 +1,6 @@
 import Braille from '../utils/braille.js';
 import { addLineBreaks, createSignageElement, createMirrorElement, downloadImage, downloadPDF } from '../utils/utils.js';
-import VoiceInput from '../utils/VoiceInput.js';
+import { VoiceInput, annyang } from '../utils/VoiceInput.js';
 
 /**
  * Inicializa los controladores de eventos para la aplicación.
@@ -77,9 +77,9 @@ export function initializeEventHandlers() {
     microphoneIcon.addEventListener('mouseup', () => {
         voiceInput.stopListening();
     });
-    }
-
     
+}
+
 
     /**
      * Evento para realizar la traducción del texto de entrada.
