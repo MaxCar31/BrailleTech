@@ -106,7 +106,7 @@ export function createSignageElement(inputText, brailleOutput) {
     outputSignageBraille.id = 'outputSignageBraille';
     outputSignageBraille.className = 'braille';
     outputSignageBraille.innerText = brailleOutput;
-    signageElement.appendChild(outputSignageInk);
+    //signageElement.appendChild(outputSignageInk);
     signageElement.appendChild(outputSignageBraille);
     document.body.appendChild(signageElement);
     return signageElement;
