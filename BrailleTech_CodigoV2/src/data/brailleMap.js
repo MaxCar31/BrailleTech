@@ -27,24 +27,13 @@ const brailleMap = {
     '¿': '⠢', '?': '⠢', '¡': '⠖', '!': '⠖', '"': '⠦', '(': '⠣', ')': '⠜','#': '⠼',
    
     '1': '⠁', '2': '⠃', '3': '⠉', '4': '⠙', '5': '⠑',
-    '6': '⠋', '7': '⠛', '8': '⠓', '9': '⠊', '0': '⠚', '@': '⠐',
+    '6': '⠋', '7': '⠛', '8': '⠓', '9': '⠊', '0': '⠚',
     
-
+    //more symbols specials-signos auxiliares
+    '*': '⠔','-': '⠤','×': '⠦', '=': '⠶','©': '⠣⠨⠉⠜', '@': '⠐', 
+    '§': '⠬', 'Bs': '⠸⠃⠎',
 
 };
-/*por implementar:
-    1. abrir y cerrar comillas interiores ‘’ <>: 6-236
-    2. no están en el pdf: '`': '⠘⠔', '~': '⠰⠴', '^': '⠈⠮',
-    3. asterisco con significado de incorrecto, supuesto o reconstruido: 256
-    4. lógica para apóstrofe ' y lógica de número con mas de 3 cifras con espaciado
-    5. signo de multiplicar (punto): 6-0d
-    6. lógica de párrafos?
-    6. los demás símbolos de operaciones aritméticas (uso frecuente) y la moneda: peso
- por corregir:
-    1. no reconoce //, \\, ||
-    2. barra vertical simple: 456-0d
-*/
-
 /*
 
     '[': '⠷', ']': '⠾', '{': '⠐⠇', '}': '⠸⠂', '-': '⠤', '—': '⠤⠤',
@@ -60,6 +49,20 @@ const brailleMap = {
     '€': '⠸⠑', '$': '⠸⠎', 'Bs': '⠸⠃⠎', '₡': '⠸⠉', 'R$': '⠸⠗', 
     'DM': '⠸⠍', '¥': '⠸⠽', '₿': '⠸⠃', '¢': '⠘⠉', '£': '⠐⠮',
 */
+
+/*por implementar:
+    1. abrir y cerrar comillas interiores ‘’ <>: 6-236
+    2. no están en el pdf: '`': '⠘⠔', '~': '⠰⠴', '^': '⠈⠮',
+    3. asterisco con significado de incorrecto, supuesto o reconstruido: 256
+    4. lógica para apóstrofe ' y lógica de número con mas de 3 cifras con espaciado
+    5. signo de multiplicar (punto): 6-0d
+    6. lógica de párrafos?
+    6. los demás símbolos de operaciones aritméticas (uso frecuente) y la moneda: peso
+ por corregir:
+    1. no reconoce //, \\, ||
+    2. barra vertical simple: 456-0d
+*/
+
 
 export default brailleMap;
 
