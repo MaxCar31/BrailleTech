@@ -12178,6 +12178,16 @@ body.dark-mode .braille-keyboard button:active {
   background-color: #555;
 }
 
+#helpMessage {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+}
+=======
 /* Estilos para el panel flotante */
 .floating-panel {
   position: absolute;
