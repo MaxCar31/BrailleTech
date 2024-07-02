@@ -34,15 +34,24 @@ export function initializeLanguageSwapHandler() {
      */
     const virtualKeyboardSection = document.getElementById('virtualKeyboardSection');
 
+    const microphoneIcon = document.getElementById('microphone'); // Obtén el ícono del micrófono
+
+
     /**
      * Actualiza la visibilidad del teclado virtual basado en el idioma de entrada seleccionado.
      */
     const updateKeyboardVisibility = () => {
         if (inputLanguage.value === 'braille') {
             virtualKeyboardSection.style.display = 'block';
+            microphoneIcon.disabled = true; // Deshabilita el ícono del micrófono si es Braille
+            microphoneIcon.classList.add('disabled-icon'); // Opcional: añade una clase para estilo visual
+     
         } else {
             virtualKeyboardSection.style.display = 'none';
-        }
+            microphoneIcon.disabled = false; // Habilita el ícono del micrófono si no es Braille
+            microphoneIcon.classList.remove('disabled-icon');
+  
+        }   
     };
 
     /**

@@ -29,6 +29,8 @@ export function initializeSoundHandlers() {
      */
     const outputText = document.getElementById('outputText');
 
+
+    
     /**
      * Evento de clic para el botón de sonido de entrada.
      * Convierte el texto del área de entrada a voz.

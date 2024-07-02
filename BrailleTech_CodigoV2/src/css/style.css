@@ -12276,4 +12276,7 @@ body.dark-mode .braille-keyboard button:active {
   align-items: center;
 }
 
-
+.disabled-icon {
+  opacity: 0.5; /* Ajusta el nivel de opacidad */
+  pointer-events: none; /* Evita que se pueda hacer clic */
+}
