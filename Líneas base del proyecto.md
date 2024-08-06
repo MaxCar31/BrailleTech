@@ -1,7 +1,7 @@
-# Proyecto BrailleX
+# Proyecto BrailleTech
 
 ## Descripción General
-BrailleX es un sistema que permite traducir texto en español a Braille y viceversa, ofreciendo funcionalidades adicionales como impresión en espejo, generación de señalética Braille y síntesis de voz.
+BrailleTech es un sistema que permite traducir texto en español a Braille y viceversa, ofreciendo funcionalidades adicionales como impresión en espejo, generación de señalética Braille y síntesis de voz.
 
 ## Arquitectura del Sistema
 El sistema se divide en dos capas principales:
