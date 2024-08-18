@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: handlers/events/voiceHandler.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: handlers/events/voiceHandler.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { VoiceInput, annyang } from '../../utils/VoiceInput.js';
+
+/**
+ * Inicializa los manejadores de eventos para la funcionalidad de reconocimiento de voz.
+ * Este método agrega eventos al documento y al icono del micrófono para comenzar y detener la escucha de voz utilizando Annyang.
+ */
+export function initializeVoiceHandler() {
+    /**
+     * Icono del micrófono para activar el reconocimiento de voz.
+     * @type {HTMLElement}
+     */
+    const microphoneIcon = document.getElementById('microphone');
+
+    /**
+     * Instancia de VoiceInput para manejar el reconocimiento de voz.
+     * @type {VoiceInput}
+     */
+    const voiceInput = new VoiceInput('inputText', 'microphone');
+
+    if (microphoneIcon) {
+        /**
+         * Evento de mousedown para el icono del micrófono.
+         * Inicia el reconocimiento de voz.
+         */
+        microphoneIcon.addEventListener('mousedown', () => {
+            voiceInput.startListening();
+        });
+
+        /**
+         * Evento de mouseup para el icono del micrófono.
+         * Detiene el reconocimiento de voz.
+         */
+        microphoneIcon.addEventListener('mouseup', () => {
+            voiceInput.stopListening();
+        });
+
+        /**
+         * Evento de clic adicional para el icono del micrófono.
+         * Útil para la depuración, muestra en la consola el estado actual de Annyang.
+         */
+        microphoneIcon.addEventListener('click', () => {
+            console.log('Micrófono clickeado. Estado de Annyang:', annyang.isListening() ? 'Escuchando' : 'Detenido');
+        });
+
+        /**
+         * Evento de focus para mostrar el mensaje de ayuda.
+         */
+        microphoneIcon.addEventListener('focus', () => {
+            showHelpMessage();
+        });
+
+        /**
+         * Evento de blur para ocultar el mensaje de ayuda.
+         */
+        microphoneIcon.addEventListener('blur', () => {
+            hideHelpMessage();
+        });
+    }
+
+    /**
+     * Evento de keydown para manejar la tecla Control.
+     * Inicia el reconocimiento de voz si Control está presionado.
+     */
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Control' &amp;&amp; !annyang.isListening()) {
+            voiceInput.startListening();
+        }
+    });
+
+    /**
+     * Evento de keyup para manejar la tecla Control.
+     * Detiene el reconocimiento de voz si Control está liberado.
+     */
+    document.addEventListener('keyup', (event) => {
+        if (event.key === 'Control' &amp;&amp; annyang.isListening()) {
+            voiceInput.stopListening();
+        }
+    });
+}
+
+/**
+ * Muestra un mensaje de ayuda indicando que se puede presionar "CTRL" para grabar.
+ */
+function showHelpMessage() {
+    const helpMessage = document.createElement('div');
+    helpMessage.id = 'helpMessage';
+    helpMessage.innerText = 'Presiona "CTRL" para grabar';
+    helpMessage.style.position = 'fixed';
+    helpMessage.style.bottom = '10px';
+    helpMessage.style.left = '10px';
+    helpMessage.style.padding = '5px 10px';
+    helpMessage.style.backgroundColor = '#000';
+    helpMessage.style.color = '#fff';
+    helpMessage.style.borderRadius = '5px';
+    helpMessage.style.zIndex = '1000'; 
+    document.body.appendChild(helpMessage);
+}
+
+
+/**
+ * Oculta el mensaje de ayuda.
+ */
+function hideHelpMessage() {
+    const helpMessage = document.getElementById('helpMessage');
+    if (helpMessage) {
+        document.body.removeChild(helpMessage);
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Braille.html">Braille</a></li><li><a href="VoiceInput.html">VoiceInput</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addLineBreaks">addLineBreaks</a></li><li><a href="global.html#brailleMap">brailleMap</a></li><li><a href="global.html#createMirrorElement">createMirrorElement</a></li><li><a href="global.html#createSignageElement">createSignageElement</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#downloadPDF">downloadPDF</a></li><li><a href="global.html#fromBraille">fromBraille</a></li><li><a href="global.html#hideHelpMessage">hideHelpMessage</a></li><li><a href="global.html#initializeCopyHandlers">initializeCopyHandlers</a></li><li><a href="global.html#initializeDownloadHandlers">initializeDownloadHandlers</a></li><li><a href="global.html#initializeEventHandlers">initializeEventHandlers</a></li><li><a href="global.html#initializeLanguageSwapHandler">initializeLanguageSwapHandler</a></li><li><a href="global.html#initializeSoundHandlers">initializeSoundHandlers</a></li><li><a href="global.html#initializeTranslationHandler">initializeTranslationHandler</a></li><li><a href="global.html#initializeVoiceHandler">initializeVoiceHandler</a></li><li><a href="global.html#showHelpMessage">showHelpMessage</a></li><li><a href="global.html#toBraille">toBraille</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Aug 05 2024 15:54:51 GMT-0500 (hora de Ecuador)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

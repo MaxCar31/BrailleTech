@@ -15,9 +15,10 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="src/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/style.css">
     <!-- Font Awesome CDN Link for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="../src/css/style.css">    
 </head>
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
@@ -33,7 +34,7 @@
                         <li class="nav-item"><a class="nav-link" href="Testimonios.html" tabindex="0">Testimonios</a></li>
                         <li class="nav-item"><a class="nav-link" href="acerca.html" tabindex="0">Acerca de</a></li>
                         <li class="nav-item">
-                            <button id="darkModeToggle" class="btn btn-outline-dark" tabindex="0">Modo Oscuro</button>
+                <!--  <button id="darkModeToggle" class="btn btn-outline-dark" tabindex="0">Modo Oscuro</button>-->
                         </li>
                     </ul>
                 </div>
@@ -112,38 +113,29 @@
                 </div>
             </section>
             <br><br>
-        
             <section id="virtualKeyboardSection" class="floating-panel" style="display: none;">
                 <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
-                  <div class="card-body p-5">
-                    <div id="keyboardPanelHeader" class="floating-panel-header">
-                      <button id="closeKeyboardPanel" class="btn-close float-end" aria-label="Close"></button>
-                      <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Teclado Virtual</span></h3>
-                      <br>
+                    <div class="card-body p-5">
+                        <div id="keyboardPanelHeader" class="floating-panel-header">
+                            <button id="closeKeyboardPanel" class="btn-close float-end" aria-label="Close"></button>
+                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Teclado Virtual</span></h3>
+                            <br>
+                        </div>
+                        <div class="keyboard-container">
+                            <div class="keyboard-row" id="row1"></div>
+                            <div class="keyboard-row" id="row2"></div>
+                            <div class="keyboard-row" id="row3"></div>
+                            <div class="keyboard-row" id="row4"></div>
+                            <div class="keyboard-row" id="row5">
+                                <button id="toggleCase" class="special-button">⇧</button>
+                                <button id="spaceButton" class="special-button">Espacio</button>
+                                <button id="toggleNumbers" class="special-button">?123</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="keyboard-container">
-                      <div class="keyboard-section">
-                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Abecedario</span></h3>
-                        <br>
-                        <div id="brailleKeyboardLettersLowercase" class="braille-keyboard"></div><br>
-                        <div id="brailleKeyboardLettersUppercase" class="braille-keyboard"></div><br>
-                        <div id="brailleKeyboardLettersAccented" class="braille-keyboard"></div>
-                      </div>
-                      <div class="keyboard-section">
-                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Números</span></h3><br>
-                        <div id="brailleKeyboardNumbers" class="braille-keyboard"></div>
-                      </div>
-                      <div class="keyboard-section">
-                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Signos</span></h3><br>
-                        <div id="brailleKeyboardSigns" class="braille-keyboard"></div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </section>
-        <br><br>           
-
-
+            </section>
+            
         <!-- Team Section -->
         <section class="py-0">
             <div class="card shadow border-0 rounded-4 px-md-4 container px-4">
@@ -211,8 +203,11 @@
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script type="module" src="src/main.js"></script>
-<script type="module" src="src/darkMode.js"></script>
+<script type="module" src="/src/main.js"></script>
+<script type="module" src="/src/darkMode.js"></script>
+<script type="module" src="/src/components/VirtualKeyboard.js"></script>
+<script type="module" src="/src/handlers/eventHandlers.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const virtualKeyboardSection = document.getElementById('virtualKeyboardSection');
@@ -240,5 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+<script src="https://ezsupport.vercel.app/js/bundled-script.js" data-chatId=6e34670f-1650-4caf-8246-a40336e4e845 defer></script>
 </body>
 </html>

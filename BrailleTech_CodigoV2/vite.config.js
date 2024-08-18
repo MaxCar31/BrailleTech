@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 export default defineConfig({
-  base: '/',  
-  root: '.',
+  base: '/', // Asegúrate de que esta ruta sea correcta
   build: {
-    outDir: './dist',
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
@@ -14,5 +14,14 @@ export default defineConfig({
         Traductor: './Traductor.html',
       }
     }
-  }
+  },
+  plugins: [
+    createHtmlPlugin({
+      inject: {
+        injectData: {
+          title: 'BrailleTech'
+        }
+      }
+    })
+  ]
 });

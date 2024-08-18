@@ -11977,7 +11977,7 @@ html {
   bottom: 20px;
   right: 20px;
   width: 700px;
-  height: 550px;
+  height: 390px;
   max-width: 100%;
   z-index: 1050;
   background-color: #ffffff;
@@ -12008,61 +12008,58 @@ html {
 
 .keyboard-container {
   padding: 10px;
-  max-height: 450px;
-  overflow-y: auto;
 }
 
-.braille-keyboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-  gap: 10px;
+.keyboard-row {
+  display: flex;
+  justify-content: center;
   margin-bottom: 10px;
 }
 
-.braille-keyboard button {
+.keyboard-row:last-child {
+  margin-bottom: 0;
+}
+
+.keyboard-container button {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 5px;
   background-color: #f8f9fa;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #333;
   cursor: pointer;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 50px;
-  text-align: center;
+  width: 45px;
+  height: 45px;
+  margin: 2px;
 }
 
-.braille-keyboard button span.braille {
+.keyboard-container button.special-button {
+  width: auto;
+  padding: 0 15px;
+}
+
+.keyboard-container button span.braille {
   font-size: 1.25rem;
-  margin-bottom: 5px;
 }
 
-.braille-keyboard button span.char {
+.keyboard-container button span.char {
   font-size: 0.75rem;
 }
 
-.braille-keyboard button:hover {
+.keyboard-container button:hover {
   background-color: #e2e6ea;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.braille-keyboard button:active {
+.keyboard-container button:active {
   background-color: #dae0e5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.keyboard-section h3 {
-  cursor: pointer;
-}
-
-.keyboard-section.collapsed .braille-keyboard {
-  display: none;
 }
 
 @media (max-width: 768px) {
@@ -12071,51 +12068,44 @@ html {
     bottom: 0;
     right: 0;
     border-radius: 0;
+    height: auto;
   }
-  
+
   .keyboard-container {
-    padding: 10px;
+    padding: 5px;
   }
 
-  .braille-keyboard {
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  .keyboard-row {
+    flex-wrap: wrap;
   }
 
-  .braille-keyboard button {
+  .keyboard-container button {
+    width: 40px;
     height: 40px;
-    padding: 6px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
-  .braille-keyboard button span.braille {
-    font-size: 1rem;
-  }
-
-  .braille-keyboard button span.char {
-    font-size: 0.625rem;
+  .keyboard-container button.special-button {
+    width: auto;
+    padding: 0 10px;
   }
 }
 
 @media (max-width: 576px) {
-  .braille-keyboard {
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  .keyboard-container button {
+    width: 35px;
+    height: 35px;
+    font-size: 0.7rem;
   }
 
-  .braille-keyboard button {
-    height: 30px;
-    padding: 4px;
-    font-size: 0.625rem;
+  .keyboard-container button span.braille {
+    font-size: 1rem;
   }
 
-  .braille-keyboard button span.braille {
-    font-size: 0.875rem;
-  }
-
-  .braille-keyboard button span.char {
-    font-size: 0.5rem;
+  .keyboard-container button span.char {
+    font-size: 0.6rem;
   }
 }
-
 
 /* Agrega estos estilos a tu archivo CSS */
 #microphone {

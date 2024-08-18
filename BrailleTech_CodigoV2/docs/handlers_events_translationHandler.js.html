@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: handlers/events/translationHandler.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: handlers/events/translationHandler.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Braille from '../../utils/braille.js';
+
+/**
+ * Inicializa los manejadores de eventos para la funcionalidad de traducción.
+ * Este método agrega un evento al botón de traducir para convertir el texto de entrada al idioma de salida seleccionado.
+ */
+export function initializeTranslationHandler() {
+    /**
+     * Botón para realizar la traducción del texto de entrada.
+     * @type {HTMLElement}
+     */
+    const translateBtn = document.getElementById('translate');
+
+    /**
+     * Área de texto de entrada de donde se obtiene el texto a traducir.
+     * @type {HTMLElement}
+     */
+    const inputText = document.getElementById('inputText');
+
+    /**
+     * Área de texto de salida donde se muestra el texto traducido.
+     * @type {HTMLElement}
+     */
+    const outputText = document.getElementById('outputText');
+
+    /**
+     * Selección del idioma de entrada.
+     * @type {HTMLElement}
+     */
+    const inputLanguage = document.getElementById('inputLanguage');
+
+    /**
+     * Evento de clic para el botón de traducción.
+     * Convierte el texto del área de entrada al idioma de salida seleccionado.
+     */
+    translateBtn.addEventListener('click', () => {
+        /**
+         * Valor del idioma de entrada seleccionado.
+         * @type {string}
+         */
+        const inputLanguageValue = inputLanguage.value;
+
+        /**
+         * Texto del área de entrada.
+         * @type {string}
+         */
+        const inputTextValue = inputText.value;
+
+        /**
+         * Texto del área de salida después de la traducción.
+         * @type {string}
+         */
+        let outputTextValue = '';
+
+        /**
+         * Expresión regular para validar texto en español.
+         * @type {RegExp}
+         */
+        const spanishRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s\(\)\!\?\,\;\:\.\-\—\'\"\/\@\%\$\€\¢\£\¥\§\&amp;\*\^\+\=\>\&lt;\[\]\{\}\`\~\\\|¿¡]*\S[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s\(\)\!\?\,\;\:\.\-\—\'\"\/\@\%\$\€\¢\£\¥\§\&amp;\*\^\+\=\>\&lt;\[\]\{\}\`\~\\\|¿¡]*$/;
+        /**
+         * Expresión regular para validar texto en Braille.
+         * @type {RegExp}
+         */
+        const brailleRegex = /^[^a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s\(\)\!\?\,\;\:\.\-\—\'\"\/\@\%\$\€\¢\£\¥\§\&amp;\*\^\+\=\>\&lt;\[\]\{\}\`\~\\\|¿¡]*\S[^a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s\(\)\!\?\,\;\:\.\-\—\'\"\/\@\%\$\€\¢\£\¥\§\&amp;\*\^\+\=\>\&lt;\[\]\{\}\`\~\\\|¿¡]*$/;
+
+        // Validación del texto de entrada basado en el idioma seleccionado
+        if (inputLanguageValue === 'espanol' &amp;&amp; !spanishRegex.test(inputTextValue)) {
+            alert('El campo de entrada contiene caracteres no válidos para el español o No se ha ingresado nada.');
+            return;
+        } else if (inputLanguageValue === 'braille' &amp;&amp; !brailleRegex.test(inputTextValue)) {
+            alert('El campo de entrada contiene caracteres no válidos para el braille o No se ha ingresado nada.');
+            return;
+        }
+
+        // Traducción del texto de entrada al idioma de salida seleccionado
+        outputTextValue = (inputLanguageValue === 'espanol') ? Braille.toBraille(inputTextValue) : Braille.toText(inputTextValue);
+
+        // Asignación del texto traducido al área de texto de salida
+        outputText.value = outputTextValue;
+    });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Braille.html">Braille</a></li><li><a href="VoiceInput.html">VoiceInput</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addLineBreaks">addLineBreaks</a></li><li><a href="global.html#brailleMap">brailleMap</a></li><li><a href="global.html#createMirrorElement">createMirrorElement</a></li><li><a href="global.html#createSignageElement">createSignageElement</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#downloadPDF">downloadPDF</a></li><li><a href="global.html#fromBraille">fromBraille</a></li><li><a href="global.html#hideHelpMessage">hideHelpMessage</a></li><li><a href="global.html#initializeCopyHandlers">initializeCopyHandlers</a></li><li><a href="global.html#initializeDownloadHandlers">initializeDownloadHandlers</a></li><li><a href="global.html#initializeEventHandlers">initializeEventHandlers</a></li><li><a href="global.html#initializeLanguageSwapHandler">initializeLanguageSwapHandler</a></li><li><a href="global.html#initializeSoundHandlers">initializeSoundHandlers</a></li><li><a href="global.html#initializeTranslationHandler">initializeTranslationHandler</a></li><li><a href="global.html#initializeVoiceHandler">initializeVoiceHandler</a></li><li><a href="global.html#showHelpMessage">showHelpMessage</a></li><li><a href="global.html#toBraille">toBraille</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Aug 05 2024 15:54:51 GMT-0500 (hora de Ecuador)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
